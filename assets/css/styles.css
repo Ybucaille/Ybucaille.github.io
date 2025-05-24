@@ -1,0 +1,228 @@
+/* General Reset */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Scrollbar globale */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Rail de la scrollbar */
+::-webkit-scrollbar-track {
+  background: #1a1a2c;
+}
+
+/* Pouce de la scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #a855f7;
+  border-radius: 6px;
+  border: 2px solid #1a1a2c;
+}
+
+/* Hover du pouce */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #c084fc;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #a855f7 #1a1a2c;
+}
+
+/* Navbar Wrapper */
+.navbar-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 600px;
+    padding: 1rem 1.5rem;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+/* Navbar sur petits écrans */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
+    }
+
+    .navbar-right {
+        margin-top: 10px;
+    }
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+}
+
+/* Adjusted space between the list items */
+.nav-links li {
+    margin: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #888888;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effect for Links */
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+/* GitHub Section */
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.github-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #888888;
+    transition: color 0.3s ease;
+    margin: 0 1rem;
+}
+
+.github-link:hover {
+    color: #ffffff;
+}
+
+.github-icon {
+    width: 20px;
+    height: 20px;
+}
+
+#particles-js {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+#particles-js canvas {
+  filter: blur(0.5px);
+}
+
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 999;
+  width: 48px;
+  height: 48px;
+  background-color: #C084FC;
+  color: white;
+  border: none;
+  border-radius: 50%; /* le plus rond possible */
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+#scrollToTopBtn.show {
+  opacity: 1;
+}
+
+#scrollToTopBtn:hover {
+  transform: scale(1.15);
+  background-color: #A855F7;
+}
+
+#copyTooltip {
+  transform: translateX(-50%);
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+  touch-action: none;
+}
+
+.stars-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #ffffff 50%, transparent);
+    opacity: 0;
+    transform: rotate(45deg);
+}
+
+@keyframes shootingStar {
+    0% {
+        opacity: 0;
+        transform: translateX(0) translateY(0) rotate(45deg);
+        width: 2px;
+    }
+    10% {
+        opacity: 1;
+        width: 100px;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(1000px) translateY(1000px) rotate(45deg);
+        width: 0;
+    }
+}

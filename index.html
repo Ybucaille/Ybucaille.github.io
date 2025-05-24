@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <link id="dynamicFavicon" rel="icon" type="image/png" href="assets/images/logo_day.png">
+  <title>Portfolio | Yann</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <script src="https://kit.fontawesome.com/b6d5f6f5c8.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="pt-24">
+  <div id="particles-js"></div>
+  <div class="stars-container" id="starsContainer"></div>
+
+  <!-- Navbar -->
+  <header class="fixed top-6 left-0 w-full flex justify-center z-50">
+    <nav class="flex items-center px-12 py-4 bg-[#12131a]/80 backdrop-blur-md border border-white/10 shadow-md rounded-2xl w-fit gap-10 max-w-screen-sm md:max-w-2xl gap-4 sm:gap-6 md:gap-10 ">
+      
+      <!-- Liens -->
+      <a href="#projetSection" class="relative text-white font-medium text-base tracking-wide hover:text-purple-400 transition duration-200 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-purple-400 hover:after:w-full after:transition-all after:duration-300">
+        Projets
+      </a>
+      <a href="#certifSection" class="relative text-white font-medium text-base tracking-wide hover:text-purple-400 transition duration-200 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-purple-400 hover:after:w-full after:transition-all after:duration-300">
+        Certifs
+      </a>
+      <a href="#aboutSection" class="relative text-white font-medium text-base tracking-wide hover:text-purple-400 transition duration-200 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-purple-400 hover:after:w-full after:transition-all after:duration-300">
+        À propos
+      </a>
+
+      <!-- Logo GitHub -->
+      <a href="https://github.com/Ybucaille" target="_blank" class="text-white hover:text-purple-400 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 16 16">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+          0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+          -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+          .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+          0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82
+          .64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82
+          .44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15
+          0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+          0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8
+          c0-4.42-3.58-8-8-8z"/>
+        </svg>
+      </a>
+
+    </nav>
+  </header>
+
+  <section class="flex flex-col md:flex-row items-center justify-center text-white text-center md:text-left px-6 py-16 max-w-6xl mx-auto space-y-8 md:space-y-0 md:space-x-12">
+    <!-- Photo de profil -->
+    <img src="assets/images/profil.png"
+        alt="Photo de profil"
+        class="w-40 h-40 md:w-52 md:h-52 object-cover rounded-full border-4 border-purple-500 shadow-md">
+
+    <!-- Texte de présentation -->
+    <div>
+      <h1 class="text-3xl md:text-5xl font-bold mb-4">Yann Bucaille</h1>
+      <h2 class="text-xl italic text-purple-400 mb-4">
+        <span id="dynamic-title" class="transition-opacity duration-500 ease-in-out">Creative Developer</span>
+      </h2>
+      <p class="text-gray-300 max-w-xl leading-relaxed">
+        Développeur curieux et rigoureux, j’aime transformer des idées ambitieuses en projets concrets. Mon objectif : créer des solutions élégantes, locales, et efficaces, notamment dans le domaine de l’intelligence artificielle personnelle.
+      </p>
+      <button onclick="toggleModal('cvModal')"
+        class="mt-6 inline-block border border-purple-500 text-purple-300 hover:bg-purple-500 hover:text-black font-semibold px-6 py-2 rounded-full transition duration-300">
+        Voir mon CV
+      </button>
+    </div>
+  </section>
+
+  <!-- Section Réalisations -->
+  <section class="py-16 px-4 text-center">
+    <h2 class="text-3xl font-bold text-white mb-12">Mes Réalisations</h2>
+
+    <div class="flex flex-wrap justify-center gap-12 mt-8">
+      
+      <!-- Carte Projet -->
+      <div id="projetSection" class="bg-[#1c1c1c]/80 text-white rounded-2xl p-8 w-[360px] transition-all duration-300 hover:shadow-xl hover:border-purple-500 hover:-translate-y-1">
+        <h3 class="text-2xl font-semibold mb-4">Mes Projets</h3>
+        <p class="text-base text-gray-300 mb-6">
+          Explorez mes projets réalisés en entreprise et à la maison.
+        </p>
+        <button onclick="toggleModal('projectsModal')" class="inline-block px-5 py-2 rounded-full border border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white transition">
+          Voir mes projets
+        </button>
+      </div>
+
+      <!-- Carte Certifications -->
+      <div id="certifSection" class="bg-[#1c1c1c]/80 text-white rounded-2xl p-8 w-[360px] transition-all duration-300 hover:shadow-xl hover:border-purple-500 hover:-translate-y-1">
+        <h3 class="text-2xl font-semibold mb-4">Mes Certifications</h3>
+        <p class="text-base text-gray-300 mb-6">
+          Découvrez les certifications que j’ai obtenues récemment.
+        </p>
+        <button onclick="toggleModal('certModal')" class="inline-block px-5 py-2 rounded-full border border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white transition">
+          Voir mes certifications
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="aboutSection" class="flex justify-center mt-16 mb-24">
+    <div class="border-2 border-purple-400 rounded-2xl p-8 text-center shadow-xl bg-black/40 backdrop-blur-md transition hover:scale-[1.02] duration-300">
+      <img src="assets/images/profil.png" alt="Photo de profil" class="w-24 h-24 mx-auto rounded-full border-4 border-purple-400 object-cover">
+      
+      <h2 class="text-2xl font-bold text-purple-400 mt-4">Yann Bucaille</h2>
+      <p class="text-white/80 mb-4">Développeur Fullstack / Créatif Système</p>
+
+      <div class="flex justify-center gap-6 mt-4 text-white text-2xl">
+        <button onclick="copyEmail()" class="relative group hover:scale-110 transition-transform duration-200 ease-in-out">
+          <i class="fas fa-envelope"></i>
+          <span id="copyTooltip"
+                class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 text-xs text-white bg-purple-600 rounded opacity-0 transition-opacity duration-300 pointer-events-none">
+            Copié !
+          </span>
+        </button>
+        <a href="https://www.linkedin.com/in/yann-bucaille-235057230/" target="_blank" class="hover:scale-110 transition-transform duration-200 ease-in-out">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/Ybucaille" target="_blank" class="hover:scale-110 transition-transform duration-200 ease-in-out">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.credly.com/users/ybucaille" target="_blank" class="hover:scale-110 transition-transform duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              class="w-8 h-8 fill-white">
+            <path d="M23.8 13.154a.3.3 0 0 0-.101-.024a.4.4 0 0 0-.202.048c-.06.028-.092.08-.127.136c-.087.128-.15.268-.226.4c-.107.187-.246.351-.38.515c-.135.156-.286.291-.424.44c-.028.027-.072.043-.107.027c-.028-.016-.036-.056-.032-.088c.04-.38.075-.763.123-1.138c.02-.172.043-.336.063-.512c.028-.247.056-.487.087-.735l.234-1.824c.02-.128.032-.372-.135-.52a.45.45 0 0 0-.233-.116a.46.46 0 0 0-.254.06c-.226.16-.297.504-.365.76c-.142.603-.178 1.241-.471 1.804a2 2 0 0 1-.202.316a.7.7 0 0 1-.186.18a.33.33 0 0 1-.246.051a.37.37 0 0 1-.238-.207a.871.87 0 0 1-.063-.324a4.5 4.5 0 0 1 .24-1.585c.045-.132.089-.252.104-.383c.028-.156.028-.38-.114-.516c-.131-.128-.337-.18-.504-.128c-.194.056-.31.244-.372.392c-.198.463-.25.95-.317 1.446c-.044.327-.127.64-.293.926a2.7 2.7 0 0 1-.603.72c-.118.087-.222.123-.328.107a.38.38 0 0 1-.278-.208a.9.9 0 0 1-.095-.315a3.361 3.36 0 0 1-.036-.616c.004-.223 0-.44.044-.658c.075-.39.678-1.937.808-2.345c.135-.407.262-.823.353-1.246c.08-.38.123-.767.11-1.15c-.007-.277-.07-.576-.288-.736a.611.61 0 0 0-.603-.048a.97.97 0 0 0-.455.428a2.5 2.5 0 0 0-.226.59a12 12 0 0 0-.266 1.29c-.071.429-.138.848-.206 1.268c-.06.355-.206 1.614-.261 1.88c-.06.272-.175.54-.301.787c-.131.268-.258.536-.408.791a.7.7 0 0 1-.175.224c-.08.06-.182.088-.27.048c-.102-.048-.146-.176-.166-.292c-.075-.435-.012-.875.072-1.302c.083-.431.44-2.4.519-2.851c.099-.532.24-1.05.285-1.59c.028-.388.09-.88-.202-1.187c-.115-.136-.31-.16-.44-.136c-.174.036-.31.176-.388.296c-.1.128-.186.28-.258.467c-.115.284-.186.615-.261.91l-.032.129q-.123.574-.186 1.162a16.95 16.948 0 0 0-.06.632q-.011.15-.027.307c0 .08.007.168-.028.244a.3.3 0 0 1-.052.068c-.08.072-.202.06-.31.056c-.557-.016-1.045.3-1.35.755c-.18.252-.281.542-.39.834c-.01.048-.034.1-.054.152c-.051.143-.13.327-.222.511a3 3 0 0 1-.317.46a3.3 3.3 0 0 1-.384.41a1.1 1.1 0 0 1-.515.26c-.174.04-.384-.043-.543-.203a.9.9 0 0 1-.206-.54c-.004-.055-.004-.115.028-.163c.05-.068.146-.072.23-.076a1.62 1.62 0 0 0 1.375-1.015c.138-.34.178-.698.122-1.046a1.2 1.2 0 0 0-.19-.48a.9.9 0 0 0-.396-.323c-.293-.14-.658-.127-1.01.004c-.575.232-.951.74-1.134 1.562l-.02.088c-.114.487-.23 1-.582 1.354c-.127.12-.261.163-.368.143c-.044-.004-.08-.04-.103-.075c-.096-.16.003-.532.15-1a4 4 0 0 0 .1-.366a.93.93 0 0 0-.108-.495a.8.8 0 0 0-.372-.324c-.143-.064-.31-.06-.468-.06h-.047c-.044 0-.103 0-.151-.012a.22.22 0 0 1-.147-.127a.5.5 0 0 1 .016-.232c.004-.02.012-.048.016-.072a.37.37 0 0 0-.162-.412a.51.51 0 0 0-.468-.036a.77.77 0 0 0-.364.348a.77.77 0 0 0-.103.48c.04.13.07.32.043.475c-.055.28-.222.51-.384.74c-.04.05-.072.106-.107.16a5 5 0 0 1-.706.825c-.372.335-.804.575-1.232.67c-.745.165-1.506-.06-1.91-.734c-.222-.38-.32-.827-.348-1.266a5.4 5.4 0 0 1 .424-2.516c.328-.76.816-1.52 1.715-1.614c.353-.04.753.083.912.4c.115.23.075.506 0 .75c-.072.244-.175.49-.18.75c-.003.26.124.54.37.616c.238.072.495-.08.634-.29c.138-.21.186-.46.245-.704a6.282 6.281 0 0 1 .662-1.634c.139-.236.297-.488.254-.76a.54.54 0 0 0-.373-.415a.54.54 0 0 0-.535.144c-.134.148-.206.371-.387.43c-.17.06-.35-.055-.507-.134c-.6-.32-1.336-.312-1.963-.048c-.634.25-1.146.735-1.526 1.294C.462 8.53.098 9.508.022 10.48c-.027.34-.031.695 0 1.038c.036.46.1.854.214 1.206c.139.423.317.79.547 1.094c.266.34.587.6.94.747c.372.148.784.22 1.192.208a3.2 3.2 0 0 0 1.177-.283a4.3 4.3 0 0 0 1.026-.68c.309-.26.594-.559.84-.89q.243-.336.44-.708a5 5 0 0 0 .178-.383c.044-.104.087-.215.202-.26c.056-.043.15-.02.202.013c.064.04.115.075.135.135c.048.116.02.232-.004.332v.012c-.028.1-.055.203-.091.303c-.14.424-.238.811-.16 1.195c.045.207.128.387.25.527a.84.84 0 0 0 .504.264c.246.04.51-.028.725-.132q.217-.103.397-.26c.06-.06.122-.12.174-.184c.044-.06.087-.147.178-.143a.15.15 0 0 1 .107.064c.028.031.04.071.06.115c.23.52.776.84 1.335.84h.07c.27 0 .556-.093.79-.22c.27-.14.48-.348.7-.552c.02-.016.045-.04.073-.044c.035-.008.07.012.099.044a.3.3 0 0 1 .047.1c.135.34.46.6.824.66a1.1 1.1 0 0 0 .99-.356c.056-.06.104-.128.167-.176c.064-.044.15-.076.222-.044c.107.04.135.164.182.268c.107.235.357.371.615.375c.289 0 .554-.148.764-.34c.195-.183.353-.399.516-.61a.3.3 0 0 1 .106-.096c.04-.024.096-.028.13 0c.033.024.045.06.06.091c.163.4.587.652 1.01.648c.417-.004.809-.224 1.103-.516c.095-.092.194-.2.32-.21c.14-.017.207.114.254.22c.072.142.115.238.25.338c.158.116.36.152.547.1c.17-.04.34-.156.47-.316c.072-.088.112-.204.19-.284c.092-.087.132.028.136.1q.022.176.008.352c-.016.236-.052.471-.08.703c-.011.068-.02.136-.063.188c-.06.068-.166.08-.253.064a3 3 0 0 0-.321-.028l-.14-.016c-.201-.012-.4-.036-.61-.044h-.185c-.404 0-.733.048-1.03.16c-.48.187-.852.57-1.003 1.018a1.3 1.3 0 0 0-.052.64c.04.203.13.403.282.587c.265.315.68.515 1.149.543c.408.02.852-.064 1.292-.26c.848-.367 1.482-1.094 1.696-1.95c0-.02.01-.039.023-.043q.448-.157.813-.428c.245-.187.467-.399.65-.643q.135-.18.253-.37c.07-.125.13-.257.202-.38a.9.9 0 0 0 .13-.316a.4.4 0 0 0-.05-.328a.26.26 0 0 0-.135-.124m-13.68-1.63c.017-.071.045-.14.06-.206a1.9 1.9 0 0 1 .262-.504c.04-.048.08-.1.135-.136a.25.25 0 0 1 .186-.048c.107.02.183.128.202.236c.032.18-.04.396-.114.555a1.1 1.1 0 0 1-.31.415c-.06.044-.114.088-.178.116c-.028.008-.063.028-.115.028h-.016c-.055 0-.114-.028-.126-.088a.8.8 0 0 1 .015-.367m4.308-.184c-.004.072-.024.148-.028.223a5 5 0 0 0 0 .779c.012.152.047.3-.016.444a1.07 1.07 0 0 1-.567.643a.6.6 0 0 1-.245.056l-.06-.004c-.12 0-.214-.092-.265-.18a.871.87 0 0 1-.1-.272a2.13 2.13 0 0 1 .072-1.122c.08-.22.202-.435.38-.594a.87.87 0 0 1 .563-.24a.3.3 0 0 1 .206.064c.04.044.06.104.056.164a.05.05 0 0 1 .004.04m6.43 4.653c-.015.044-.06.104-.08.14c-.042.08-.102.163-.161.235a2.6 2.6 0 0 1-.317.304c-.238.18-.503.311-.777.387a2 2 0 0 1-.487.072h-.04a.8.8 0 0 1-.515-.18a.43.43 0 0 1-.158-.25a.54.54 0 0 1 .047-.305a.78.78 0 0 1 .38-.383c.326-.16.682-.176 1.019-.16c.139.004.265.012.4.02c.107.004.218.012.325.024q.086 0 .17.012c.044.004.092-.004.135.008c.06.004.068.036.06.076" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fenêtre Modale pour le CV -->
+  <div id="cvModal" class="modal fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 hidden" onclick="closeModalOutside(event)">
+    <div class="relative bg-[#1c1c1c] text-white p-6 rounded-2xl w-[90%] max-w-3xl shadow-lg border border-purple-500" onclick="event.stopPropagation()">
+
+      <button onclick="toggleModal('cvModal')" class="absolute top-3 right-4 text-gray-300 hover:text-purple-400 text-2xl font-bold">
+        &times;
+      </button>
+
+      <h3 class="text-xl font-semibold mb-4 text-center">Mon CV</h3>
+
+      <iframe src="assets/pdfs/bucaille-yann.pdf#view=FitH&zoom=page-width" class="w-full h-[80vh] min-h-[600px] rounded-md border border-white/10"></iframe>
+
+      <div class="text-center mt-4">
+        <a href="assets/pdfs/bucaille-yann.pdf" target="_blank" rel="noopener noreferrer" download class="inline-block px-5 py-2 mt-2 rounded-full border border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white transition">
+          Télécharger le CV
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Fenêtre Modale pour les projets -->
+  <div id="projectsModal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70" onclick="closeModalOutside(event)">
+    <div class="bg-[#1e1e2f] text-white p-6 rounded-2xl shadow-xl max-w-5xl w-full relative border border-purple-500 max-h-[90vh] overflow-y-auto" style="overscroll-behavior: contain;" onclick="event.stopPropagation()">
+      <button onclick="toggleModal('projectsModal')" class="absolute top-4 right-6 text-gray-300 text-xl hover:text-red-500">&times;</button>
+      <h2 class="text-2xl font-bold mb-6">Mes Projets</h2>
+      <div id="projectsContainer" class="grid md:grid-cols-3 sm:grid-cols-2 gap-6">
+        <!-- Les cartes de projets seront insérées ici dynamiquement -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Fenêtre Modale pour les certifs -->
+  <div id="certModal" class="modal fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50 flex items-center justify-center" onclick="closeModalOutside(event)">
+    <div class="bg-[#1e1e2f] text-white p-6 rounded-2xl shadow-xl max-w-5xl w-full relative border border-purple-500 max-h-[90vh] overflow-y-auto" style="overscroll-behavior: contain;" onclick="event.stopPropagation()">
+      <!-- Header -->
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold">Mes Certifications</h2>
+        <button onclick="toggleModal('certModal')" class="text-xl font-bold hover:text-purple-400">&times;</button>
+      </div>
+
+      <!-- Container pour toutes les certifications -->
+      <div id="certificationsContainer" class="flex flex-wrap gap-4 justify-start">
+        
+        <!-- Cartes ajoutées dynamiquement -->
+
+      </div>
+    </div>
+  </div>
+
+
+  <button id="scrollToTopBtn" title="Remonter en haut">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/shooting_stars.js"></script>
+</body>
+</html>
