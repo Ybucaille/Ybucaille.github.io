@@ -184,6 +184,14 @@ const customProjects = [
     url: "assets/pdfs/ЯзXP.pdf",
     date: "2025-04-18"
   },
+  {
+    name: "Mnemonic 2.0",
+    description: "Mnemonic était une simple mémoire vectorielle locale ; Mnemonic 2.0 en fait une mémoire cognitive complète, capable de relier, filtrer et contextualiser les souvenirs pour des IA réellement continues.",
+    language: "Python",
+    version: "v1.0",
+    url: "assets/pdfs/Mnemonic_2.0.pdf",
+    date: "2025-10-19"
+  },
 ];
 
 document.querySelector('[onclick="toggleModal(\'projectsModal\')"]').addEventListener('click', () => {
@@ -484,3 +492,4 @@ function copyEmail() {
     console.error("Erreur lors de la copie :", err);
   });
 }
+
