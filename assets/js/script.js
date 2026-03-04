@@ -138,8 +138,8 @@ function closeModalOutside(event) {
 
 const customProjects = [
   {
-    name: "Cat Identifier",
-    description: "Système de reconnaissance de chats via webcam, combinant détection YOLOv11 et classification fine-tunée. L'application apprend à différencier tes chats au fil des captures et s'améliore en continu.",
+    name: "Iris",
+    description: "Système de reconnaissance de chats via webcam, combinant détection YOLOv11 et classification fine-tunée. L'application apprend à différencier des chats au fil des captures et s'améliore en continu.",
     language: "Python",
     url: "assets/pdfs/Cats_Identifier.pdf",
     date: "2024-09-10"
@@ -492,4 +492,5 @@ function copyEmail() {
     console.error("Erreur lors de la copie :", err);
   });
 }
+
 
