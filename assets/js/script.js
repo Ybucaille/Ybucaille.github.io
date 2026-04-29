@@ -192,14 +192,6 @@ const customProjects = [
     url: "assets/pdfs/Mnemonic_2.0.pdf",
     date: "2025-10-19"
   },
-  {
-    name: "Nexus Observatory",
-    description: "Dashboard d’observabilité IA local-first pour monitorer, debugger et comparer des exécutions LLM avec historique des runs, traces, providers compatibles OpenAI et Model Lab.",
-    language: "TypeScript / Python",
-    version: "v0.1.0",
-    url: "https://github.com/Ybucaille/NexusObservatory",
-    date: "2026-04-29"
-  },
 ];
 
 document.querySelector('[onclick="toggleModal(\'projectsModal\')"]').addEventListener('click', () => {
