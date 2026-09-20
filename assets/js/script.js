@@ -368,6 +368,14 @@ function renderProjects(projects) {
 
 const certifications = [
   {
+    title: "Google Cybersecurity",
+    issuer: "Coursea",
+    year: "2026",
+    image: "assets/images/Google.png",
+    url: "assets/pdfs/Certificat_cyber_google.pdf",
+    validate: "Voir le certificat PDF"
+  },
+  {
     title: "Introduction to Modern AI",
     issuer: "Cisco",
     year: "2025",
@@ -445,14 +453,6 @@ const certifications = [
     year: "2025",
     image: "https://cdn.glitch.global/0a0fc8a5-02f2-465e-a097-4d0cfd754b7d/SecNum.png?v=1736722373099",
     url: "assets/pdfs/Certificat_SecNum.pdf",
-    validate: "Voir le certificat PDF"
-  },
-  {
-    title: "Google Cybersecurity",
-    issuer: "Coursea",
-    year: "2026",
-    image: "assets/images/Google.png",
-    url: "assets/pdfs/Certificat_cyber_google.pdf",
     validate: "Voir le certificat PDF"
   }
 ];
