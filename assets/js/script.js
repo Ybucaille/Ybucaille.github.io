@@ -372,8 +372,8 @@ const certifications = [
     issuer: "Coursea",
     year: "2026",
     image: "assets/images/Google.png",
-    url: "assets/pdfs/Certificat_cyber_google.pdf",
-    validate: "Voir le certificat PDF"
+    url: "https://www.coursera.org/verify/professional-cert/QP4A6JIYNVJS",
+    validate: "Voir sur Coursea"
   },
   {
     title: "Introduction to Modern AI",
