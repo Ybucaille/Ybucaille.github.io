@@ -1,210 +1,391 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <link id="dynamicFavicon" rel="icon" type="image/png" href="assets/images/logo_day.png">
-  <title>Portfolio | Yann</title>
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Particles.js -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-  <script src="https://kit.fontawesome.com/b6d5f6f5c8.js" crossorigin="anonymous"></script>
-
-  <link rel="stylesheet" href="assets/css/styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yann Bucaille — La pile</title>
+<meta name="description" content="Portfolio de Yann Bucaille, technicien systèmes et réseaux en formation (TSSR, 2i Academy) : serveurs, outils, interfaces et IA locale, rangés par couche.">
+<meta name="theme-color" content="#e3e2dc">
+<script>try{var t=localStorage.getItem("theme");if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="light"}</script>
+<meta property="og:title" content="Yann Bucaille — La pile">
+<meta property="og:description" content="Serveurs, outils, interfaces et IA locale, rangés par couche. En recherche d'alternance TSSR.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+} }
+</script>
+<script type="module" src="assets/js/main.js"></script>
 </head>
+<body>
+<a class="skip" href="#c1">Aller aux projets</a>
 
-<body class="pt-24">
-  <div id="particles-js"></div>
-  <div class="stars-container" id="starsContainer"></div>
+<header class="top">
+  <a class="brand" href="#top">Yann Bucaille</a>
+  <p class="where mono" aria-live="polite"><span class="where-n">00</span> <span class="where-t">surface</span></p>
+  <nav class="top-links" aria-label="Raccourcis">
+    <button class="theme" type="button" aria-label="Passer au thème sombre"><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="sun" cx="12" cy="12" r="4.2"/><path class="moon" d="M19.5 14.2A7.8 7.8 0 1 1 9.8 4.5a6.2 6.2 0 0 0 9.7 9.7z"/><g class="rays"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
+    <a href="#alternance">Alternance</a>
+    <a href="assets/pdf/bucaille-yann.pdf">CV</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <!-- Navbar -->
-  <header class="fixed top-6 left-0 w-full flex justify-center z-50">
-    <nav class="flex items-center px-12 py-4 bg-[#12131a]/80 backdrop-blur-md border border-white/10 shadow-md rounded-2xl w-fit gap-10 max-w-screen-sm md:max-w-2xl gap-4 sm:gap-6 md:gap-10 ">
-      
-      <!-- Liens -->
-      <a href="#projetSection" class="relative text-white font-medium text-base tracking-wide hover:text-purple-400 transition duration-200 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-purple-400 hover:after:w-full after:transition-all after:duration-300">
-        Projets
-      </a>
-      <a href="#certifSection" class="relative text-white font-medium text-base tracking-wide hover:text-purple-400 transition duration-200 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-purple-400 hover:after:w-full after:transition-all after:duration-300">
-        Certifs
-      </a>
-      <a href="#aboutSection" class="relative text-white font-medium text-base tracking-wide hover:text-purple-400 transition duration-200 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-purple-400 hover:after:w-full after:transition-all after:duration-300">
-        À propos
-      </a>
+<nav class="rail" aria-label="Couches">
+  <ol>
+    <li><a href="#c1"><span class="mono">01</span> Interfaces &amp; IA</a></li>
+    <li><a href="#c2"><span class="mono">02</span> Bureau &amp; GPU</a></li>
+    <li><a href="#c3"><span class="mono">03</span> Ligne de commande</a></li>
+    <li><a href="#c4"><span class="mono">04</span> Services</a></li>
+    <li><a href="#c5"><span class="mono">05</span> Système &amp; réseau</a></li>
+    <li><a href="#c6"><span class="mono">06</span> Socle</a></li>
+  </ol>
+</nav>
 
-      <!-- Logo GitHub -->
-      <a href="https://github.com/Ybucaille" target="_blank" class="text-white hover:text-purple-400 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 16 16">
-          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
-          0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
-          -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
-          .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
-          0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82
-          .64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82
-          .44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15
-          0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
-          0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8
-          c0-4.42-3.58-8-8-8z"/>
-        </svg>
-      </a>
+<canvas id="stack" aria-hidden="true"></canvas>
 
-    </nav>
+<main id="top">
+
+<section class="intro" data-mode="intro">
+  <p class="mono eyebrow">Technicien systèmes et réseaux en formation · TSSR · 2i Academy, Normandie</p>
+  <h1 class="reveal"><span>Yann</span> <span>Bucaille</span></h1>
+  <p class="lede reveal">Je monte des serveurs, j'écris des outils et je construis des interfaces, du binaire jusqu'à l'IA locale. Mes projets sont rangés ici par couche, de l'écran jusqu'au socle.</p>
+  <p class="intro-cta reveal"><a class="pill" href="#alternance">Je cherche une alternance</a> <span class="mono hint">défiler pour descendre ↓</span></p>
+</section>
+
+<!-- ============ 01 ============ -->
+<section class="layer" id="c1" data-layer="0">
+  <header class="layer-head" data-mode="layer">
+    <p class="mono">Couche 01</p>
+    <h2>Interfaces &amp; IA</h2>
+    <p>Ce que l'on voit à l'écran, et les modèles qui tournent derrière, en local.</p>
   </header>
 
-  <section class="flex flex-col md:flex-row items-center justify-center text-white text-center md:text-left px-6 py-16 max-w-6xl mx-auto space-y-8 md:space-y-0 md:space-x-12">
-    <!-- Photo de profil -->
-    <img src="assets/images/profil.png"
-        alt="Photo de profil"
-        class="w-40 h-40 md:w-52 md:h-52 object-cover rounded-full border-4 border-purple-500 shadow-md">
+  <article class="project" data-project="nexus" data-tech="Python,FastAPI,SQLite,Node.js,Next.js,uv,Playwright">
+    <p class="mono kicker">01.1 · runtime d'IA local · code privé</p>
+    <h3>Nexus</h3>
+    <p class="lede">Le projet que je fais évoluer depuis le plus longtemps : un runtime d'IA local et mono-utilisateur, conçu pour que chaque décision reste lisible.</p>
+    <p>Le modèle propose ; la politique du backend, le périmètre de l'espace de travail et un exécuteur contrôlé autorisent. Les outils sont en lecture seule et une approbation ne peut déclencher ni écriture, ni commande shell. Mémoire par portée, sessions indépendantes des projets, plugins déclarés par manifeste, dont un module d'échecs avec un apprentissage hors ligne.</p>
+    <figure class="media">
+      <video muted loop playsinline preload="none" poster="assets/media/nexus.jpg" data-src="assets/media/nexus.mp4" aria-label="Cockpit Horizon de Nexus : écran d'accueil puis palette de commandes ouverte avec Ctrl+K"></video>
+      <figcaption class="mono">Cockpit « Horizon » · Ctrl+K ouvre la palette de commandes · le code reste privé</figcaption>
+    </figure>
+    <p class="tech mono"><span>Python</span><span>FastAPI</span><span>SQLite</span><span>CLI Node.js</span><span>Next.js</span><span>uv</span><span>Playwright</span></p>
+    <p class="links"><a href="https://github.com/Ybucaille/Nexus">La vision du projet sur GitHub ↗</a></p>
+  </article>
 
-    <!-- Texte de présentation -->
-    <div>
-      <h1 class="text-3xl md:text-5xl font-bold mb-4">Yann Bucaille</h1>
-      <h2 class="text-xl italic text-purple-400 mb-4">
-        <span id="dynamic-title" class="transition-opacity duration-500 ease-in-out">Creative Developer</span>
-      </h2>
-      <p class="text-gray-300 max-w-xl leading-relaxed">
-        Développeur curieux et rigoureux, j’aime transformer des idées ambitieuses en projets concrets. Mon objectif : créer des solutions élégantes, locales, et efficaces, notamment dans le domaine de l’intelligence artificielle personnelle.
-      </p>
-      <button onclick="toggleModal('cvModal')"
-        class="mt-6 inline-block border border-purple-500 text-purple-300 hover:bg-purple-500 hover:text-black font-semibold px-6 py-2 rounded-full transition duration-300">
-        Voir mon CV
-      </button>
-    </div>
-  </section>
+  <article class="project" data-project="observatory" data-tech="TypeScript,Next.js,Tailwind CSS,FastAPI,Python,SQLite">
+    <p class="mono kicker">01.2 · observabilité de LLM</p>
+    <h3>Nexus Observatory</h3>
+    <p class="lede">Un tableau de bord local pour surveiller, déboguer et comparer des exécutions de modèles de langage.</p>
+    <p>Chaque prompt exécuté devient un run consultable, avec sa trace en frise chronologique. Les fournisseurs sont interchangeables : un mock local ou n'importe quel point d'accès compatible OpenAI. Un Model Lab compare les réponses de plusieurs modèles côte à côte.</p>
+    <figure class="media duo">
+      <img src="assets/media/observatory.webp" alt="Tableau de bord de Nexus Observatory" loading="lazy" width="1200" height="750">
+      <img src="assets/media/observatory-trace.webp" alt="Frise chronologique d'une trace d'exécution" loading="lazy" width="1200" height="750">
+    </figure>
+    <p class="tech mono"><span>TypeScript</span><span>Next.js</span><span>Tailwind CSS</span><span>FastAPI</span><span>Python</span><span>SQLite</span></p>
+    <p class="links"><a href="https://github.com/Ybucaille/NexusObservatory">GitHub ↗</a></p>
+  </article>
 
-  <!-- Section Réalisations -->
-  <section class="py-16 px-4 text-center">
-    <h2 class="text-3xl font-bold text-white mb-12">Mes Réalisations</h2>
+  <article class="project" data-project="livequill" data-tech="Python,PyPI,GitHub Actions">
+    <p class="mono kicker">01.3 · outil de développement · publié sur PyPI</p>
+    <h3>LiveQuill</h3>
+    <p class="lede">On décrit une modification dans une barre flottante posée sur son site local ; le modèle choisi modifie les vrais fichiers et la page se recharge.</p>
+    <p>Il fonctionne avec une API, un modèle local ou un agent en ligne de commande. Python 3.10 et plus, aucune dépendance, une intégration continue sur GitHub Actions et un paquet publié sur PyPI.</p>
+    <figure class="media">
+      <video muted loop playsinline preload="none" poster="assets/media/livequill.jpg" data-src="assets/media/livequill.mp4" aria-label="Démonstration de LiveQuill avec Claude Code"></video>
+      <figcaption class="mono">Premier lancement réel avec Claude Code · accéléré ×3</figcaption>
+    </figure>
+    <p class="tech mono"><span>Python</span><span>0 dépendance</span><span>PyPI</span><span>GitHub Actions</span></p>
+    <p class="links"><a href="https://github.com/Ybucaille/livequill">GitHub ↗</a> <a href="https://ybucaille.github.io/livequill/">Site du projet ↗</a></p>
+  </article>
 
-    <div class="flex flex-wrap justify-center gap-12 mt-8">
-      
-      <!-- Carte Projet -->
-      <div id="projetSection" class="bg-[#1c1c1c]/80 text-white rounded-2xl p-8 w-[360px] transition-all duration-300 hover:shadow-xl hover:border-purple-500 hover:-translate-y-1">
-        <h3 class="text-2xl font-semibold mb-4">Mes Projets</h3>
-        <p class="text-base text-gray-300 mb-6">
-          Explorez mes projets réalisés en entreprise et à la maison.
-        </p>
-        <button onclick="toggleModal('projectsModal')" class="inline-block px-5 py-2 rounded-full border border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white transition">
-          Voir mes projets
-        </button>
-      </div>
+  <div class="also">
+    <h3 class="mono">Aussi dans cette couche</h3>
+    <ul>
+      <li data-project="aera" data-tech="TypeScript,Vite,Canvas 2D,Node.js,Fastify"><strong>AERA</strong><span>Prototype : la webcam détecte en local deux mains et leurs 21 articulations ; un pincement pouce-index saisit une fenêtre et la déplace.</span><em class="mono">TypeScript · Vite · Canvas 2D · Fastify</em></li>
+      <li data-project="iris" data-tech="Python,Flask"><strong>Iris</strong><span>Reconstruction de Cats Identifier : détection et identification séparées, modèle entraîné puis évalué avant toute promotion explicite.</span><em class="mono">Python · Flask</em></li>
+      <li data-project="orca" data-tech="Python,Docker,SWE-bench"><strong>Orca Compute</strong><span>Banc d'essai sur des cas SWE-bench réels : préparation des dépôts, notation dans Docker, mise en quarantaine des cas ambigus.</span><em class="mono">Python · Docker · SWE-bench</em></li>
+      <li data-project="mnemonic" data-tech="Python,FAISS"><a href="https://github.com/Ybucaille/Mnemonic"><strong>Mnemonic</strong></a><span>Mémoire vectorielle locale : retrouver un souvenir par similarité de sens, stocké en JSONL ou dans un index FAISS.</span><em class="mono">Python · FAISS</em></li>
+      <li data-project="nexnotes" data-tech="Python,Whisper,CustomTkinter"><a href="https://github.com/Ybucaille/NexNotes"><strong>NexNotes</strong></a><span>Notes audio et texte, transcription locale par Whisper, sans cloud.</span><em class="mono">Python · Whisper · CustomTkinter</em></li>
+    </ul>
+  </div>
+</section>
 
-      <!-- Carte Certifications -->
-      <div id="certifSection" class="bg-[#1c1c1c]/80 text-white rounded-2xl p-8 w-[360px] transition-all duration-300 hover:shadow-xl hover:border-purple-500 hover:-translate-y-1">
-        <h3 class="text-2xl font-semibold mb-4">Mes Certifications</h3>
-        <p class="text-base text-gray-300 mb-6">
-          Découvrez les certifications que j’ai obtenues récemment.
-        </p>
-        <button onclick="toggleModal('certModal')" class="inline-block px-5 py-2 rounded-full border border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white transition">
-          Voir mes certifications
-        </button>
-      </div>
+<!-- ============ 02 ============ -->
+<section class="layer" id="c2" data-layer="1">
+  <header class="layer-head" data-mode="layer">
+    <p class="mono">Couche 02</p>
+    <h2>Bureau &amp; GPU</h2>
+    <p>Mon environnement Linux, ce qui s'y affiche et ce qui le fait bouger.</p>
+  </header>
 
-    </div>
-  </section>
+  <article class="project" data-project="woofer" data-tech="Rust,wgpu,Vulkan,PipeWire,Wayland">
+    <p class="mono kicker">02.1 · fond d'écran audio-réactif</p>
+    <h3>Woofer</h3>
+    <p class="lede">Un fond d'écran Wayland qui réagit à la musique : les basses poussent l'image, chaque kick la fait vibrer.</p>
+    <p>Woofer lit le son directement dans PipeWire, calcule le rendu sur le GPU avec wgpu et se place sous les fenêtres grâce à wlr-layer-shell. Treize préréglages, du cône de haut-parleur au verre brisé, se changent à chaud avec <code>woofer ctl</code> ; <code>--idle-fps 0</code> arrête le rendu dans le silence.</p>
+    <figure class="media">
+      <video muted loop playsinline preload="none" poster="assets/media/woofer.jpg" data-src="assets/media/woofer.mp4" aria-label="Préréglages woofer, nebula, shards et ripple"></video>
+      <figcaption class="mono">Préréglages woofer · nebula · shards · ripple</figcaption>
+    </figure>
+    <p class="tech mono"><span>Rust</span><span>wgpu</span><span>Vulkan</span><span>PipeWire</span><span>Wayland</span></p>
+    <p class="links"><a href="https://github.com/Ybucaille/woofer">GitHub ↗</a> <a href="https://ybucaille.github.io/woofer/">Démo en ligne ↗</a></p>
+  </article>
 
-  <section id="aboutSection" class="flex justify-center mt-16 mb-24">
-    <div class="border-2 border-purple-400 rounded-2xl p-8 text-center shadow-xl bg-black/40 backdrop-blur-md transition hover:scale-[1.02] duration-300">
-      <img src="assets/images/profil.png" alt="Photo de profil" class="w-24 h-24 mx-auto rounded-full border-4 border-purple-400 object-cover">
-      
-      <h2 class="text-2xl font-bold text-purple-400 mt-4">Yann Bucaille</h2>
-      <p class="text-white/80 mb-4">Développeur Fullstack / Créatif Système</p>
+  <article class="project" data-project="caelestia" data-tech="QML,Quickshell,Hyprland,GLSL,Shell">
+    <p class="mono kicker">02.2 · contributions open source</p>
+    <h3>Caelestia shell</h3>
+    <p class="lede">Je contribue au shell de bureau Caelestia (Quickshell sur Hyprland) en contributeur externe.</p>
+    <ol class="gitlog mono">
+      <li><b class="ok">fusionnée</b> #2186 fix(drawers): keep sidebar open when hovering utilities</li>
+      <li><b>ouverte</b> #2217 fix(shaders): add GLSL ES 100 to wallpaper transition shaders</li>
+      <li><b>ouverte</b> #2214 feat(bar): add optional application icons to workspaces</li>
+      <li><b>ouverte</b> #2179 feat(launcher): add prefixed web searches</li>
+      <li><b>ouverte</b> #2178 fix(services): destroy completed nmcli command processes</li>
+    </ol>
+    <p>À côté, l'extension <a href="https://github.com/Ybucaille/caelestia-websearch">caelestia-websearch</a> ajoute la recherche web au lanceur (Google, YouTube, Wikipédia, GitHub, Reddit, Maps), sans toucher au lancement d'applications, avec une installation locale sauvegardée et une désinstallation propre.</p>
+    <p class="tech mono"><span>QML</span><span>Quickshell</span><span>Hyprland</span><span>GLSL</span><span>Shell</span></p>
+    <p class="links"><a href="https://github.com/caelestia-dots/shell/pulls?q=is%3Apr+author%3AYbucaille">Mes PR ↗</a></p>
+  </article>
 
-      <div class="flex justify-center gap-6 mt-4 text-white text-2xl">
-        <button onclick="copyEmail()" class="relative group hover:scale-110 transition-transform duration-200 ease-in-out">
-          <i class="fas fa-envelope"></i>
-          <span id="copyTooltip"
-                class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 text-xs text-white bg-purple-600 rounded opacity-0 transition-opacity duration-300 pointer-events-none">
-            Copié !
-          </span>
-        </button>
-        <a href="https://www.linkedin.com/in/yann-bucaille-235057230/" target="_blank" class="hover:scale-110 transition-transform duration-200 ease-in-out">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="https://github.com/Ybucaille" target="_blank" class="hover:scale-110 transition-transform duration-200 ease-in-out">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://www.credly.com/users/ybucaille" target="_blank" class="hover:scale-110 transition-transform duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              class="w-8 h-8 fill-white">
-            <path d="M23.8 13.154a.3.3 0 0 0-.101-.024a.4.4 0 0 0-.202.048c-.06.028-.092.08-.127.136c-.087.128-.15.268-.226.4c-.107.187-.246.351-.38.515c-.135.156-.286.291-.424.44c-.028.027-.072.043-.107.027c-.028-.016-.036-.056-.032-.088c.04-.38.075-.763.123-1.138c.02-.172.043-.336.063-.512c.028-.247.056-.487.087-.735l.234-1.824c.02-.128.032-.372-.135-.52a.45.45 0 0 0-.233-.116a.46.46 0 0 0-.254.06c-.226.16-.297.504-.365.76c-.142.603-.178 1.241-.471 1.804a2 2 0 0 1-.202.316a.7.7 0 0 1-.186.18a.33.33 0 0 1-.246.051a.37.37 0 0 1-.238-.207a.871.87 0 0 1-.063-.324a4.5 4.5 0 0 1 .24-1.585c.045-.132.089-.252.104-.383c.028-.156.028-.38-.114-.516c-.131-.128-.337-.18-.504-.128c-.194.056-.31.244-.372.392c-.198.463-.25.95-.317 1.446c-.044.327-.127.64-.293.926a2.7 2.7 0 0 1-.603.72c-.118.087-.222.123-.328.107a.38.38 0 0 1-.278-.208a.9.9 0 0 1-.095-.315a3.361 3.36 0 0 1-.036-.616c.004-.223 0-.44.044-.658c.075-.39.678-1.937.808-2.345c.135-.407.262-.823.353-1.246c.08-.38.123-.767.11-1.15c-.007-.277-.07-.576-.288-.736a.611.61 0 0 0-.603-.048a.97.97 0 0 0-.455.428a2.5 2.5 0 0 0-.226.59a12 12 0 0 0-.266 1.29c-.071.429-.138.848-.206 1.268c-.06.355-.206 1.614-.261 1.88c-.06.272-.175.54-.301.787c-.131.268-.258.536-.408.791a.7.7 0 0 1-.175.224c-.08.06-.182.088-.27.048c-.102-.048-.146-.176-.166-.292c-.075-.435-.012-.875.072-1.302c.083-.431.44-2.4.519-2.851c.099-.532.24-1.05.285-1.59c.028-.388.09-.88-.202-1.187c-.115-.136-.31-.16-.44-.136c-.174.036-.31.176-.388.296c-.1.128-.186.28-.258.467c-.115.284-.186.615-.261.91l-.032.129q-.123.574-.186 1.162a16.95 16.948 0 0 0-.06.632q-.011.15-.027.307c0 .08.007.168-.028.244a.3.3 0 0 1-.052.068c-.08.072-.202.06-.31.056c-.557-.016-1.045.3-1.35.755c-.18.252-.281.542-.39.834c-.01.048-.034.1-.054.152c-.051.143-.13.327-.222.511a3 3 0 0 1-.317.46a3.3 3.3 0 0 1-.384.41a1.1 1.1 0 0 1-.515.26c-.174.04-.384-.043-.543-.203a.9.9 0 0 1-.206-.54c-.004-.055-.004-.115.028-.163c.05-.068.146-.072.23-.076a1.62 1.62 0 0 0 1.375-1.015c.138-.34.178-.698.122-1.046a1.2 1.2 0 0 0-.19-.48a.9.9 0 0 0-.396-.323c-.293-.14-.658-.127-1.01.004c-.575.232-.951.74-1.134 1.562l-.02.088c-.114.487-.23 1-.582 1.354c-.127.12-.261.163-.368.143c-.044-.004-.08-.04-.103-.075c-.096-.16.003-.532.15-1a4 4 0 0 0 .1-.366a.93.93 0 0 0-.108-.495a.8.8 0 0 0-.372-.324c-.143-.064-.31-.06-.468-.06h-.047c-.044 0-.103 0-.151-.012a.22.22 0 0 1-.147-.127a.5.5 0 0 1 .016-.232c.004-.02.012-.048.016-.072a.37.37 0 0 0-.162-.412a.51.51 0 0 0-.468-.036a.77.77 0 0 0-.364.348a.77.77 0 0 0-.103.48c.04.13.07.32.043.475c-.055.28-.222.51-.384.74c-.04.05-.072.106-.107.16a5 5 0 0 1-.706.825c-.372.335-.804.575-1.232.67c-.745.165-1.506-.06-1.91-.734c-.222-.38-.32-.827-.348-1.266a5.4 5.4 0 0 1 .424-2.516c.328-.76.816-1.52 1.715-1.614c.353-.04.753.083.912.4c.115.23.075.506 0 .75c-.072.244-.175.49-.18.75c-.003.26.124.54.37.616c.238.072.495-.08.634-.29c.138-.21.186-.46.245-.704a6.282 6.281 0 0 1 .662-1.634c.139-.236.297-.488.254-.76a.54.54 0 0 0-.373-.415a.54.54 0 0 0-.535.144c-.134.148-.206.371-.387.43c-.17.06-.35-.055-.507-.134c-.6-.32-1.336-.312-1.963-.048c-.634.25-1.146.735-1.526 1.294C.462 8.53.098 9.508.022 10.48c-.027.34-.031.695 0 1.038c.036.46.1.854.214 1.206c.139.423.317.79.547 1.094c.266.34.587.6.94.747c.372.148.784.22 1.192.208a3.2 3.2 0 0 0 1.177-.283a4.3 4.3 0 0 0 1.026-.68c.309-.26.594-.559.84-.89q.243-.336.44-.708a5 5 0 0 0 .178-.383c.044-.104.087-.215.202-.26c.056-.043.15-.02.202.013c.064.04.115.075.135.135c.048.116.02.232-.004.332v.012c-.028.1-.055.203-.091.303c-.14.424-.238.811-.16 1.195c.045.207.128.387.25.527a.84.84 0 0 0 .504.264c.246.04.51-.028.725-.132q.217-.103.397-.26c.06-.06.122-.12.174-.184c.044-.06.087-.147.178-.143a.15.15 0 0 1 .107.064c.028.031.04.071.06.115c.23.52.776.84 1.335.84h.07c.27 0 .556-.093.79-.22c.27-.14.48-.348.7-.552c.02-.016.045-.04.073-.044c.035-.008.07.012.099.044a.3.3 0 0 1 .047.1c.135.34.46.6.824.66a1.1 1.1 0 0 0 .99-.356c.056-.06.104-.128.167-.176c.064-.044.15-.076.222-.044c.107.04.135.164.182.268c.107.235.357.371.615.375c.289 0 .554-.148.764-.34c.195-.183.353-.399.516-.61a.3.3 0 0 1 .106-.096c.04-.024.096-.028.13 0c.033.024.045.06.06.091c.163.4.587.652 1.01.648c.417-.004.809-.224 1.103-.516c.095-.092.194-.2.32-.21c.14-.017.207.114.254.22c.072.142.115.238.25.338c.158.116.36.152.547.1c.17-.04.34-.156.47-.316c.072-.088.112-.204.19-.284c.092-.087.132.028.136.1q.022.176.008.352c-.016.236-.052.471-.08.703c-.011.068-.02.136-.063.188c-.06.068-.166.08-.253.064a3 3 0 0 0-.321-.028l-.14-.016c-.201-.012-.4-.036-.61-.044h-.185c-.404 0-.733.048-1.03.16c-.48.187-.852.57-1.003 1.018a1.3 1.3 0 0 0-.052.64c.04.203.13.403.282.587c.265.315.68.515 1.149.543c.408.02.852-.064 1.292-.26c.848-.367 1.482-1.094 1.696-1.95c0-.02.01-.039.023-.043q.448-.157.813-.428c.245-.187.467-.399.65-.643q.135-.18.253-.37c.07-.125.13-.257.202-.38a.9.9 0 0 0 .13-.316a.4.4 0 0 0-.05-.328a.26.26 0 0 0-.135-.124m-13.68-1.63c.017-.071.045-.14.06-.206a1.9 1.9 0 0 1 .262-.504c.04-.048.08-.1.135-.136a.25.25 0 0 1 .186-.048c.107.02.183.128.202.236c.032.18-.04.396-.114.555a1.1 1.1 0 0 1-.31.415c-.06.044-.114.088-.178.116c-.028.008-.063.028-.115.028h-.016c-.055 0-.114-.028-.126-.088a.8.8 0 0 1 .015-.367m4.308-.184c-.004.072-.024.148-.028.223a5 5 0 0 0 0 .779c.012.152.047.3-.016.444a1.07 1.07 0 0 1-.567.643a.6.6 0 0 1-.245.056l-.06-.004c-.12 0-.214-.092-.265-.18a.871.87 0 0 1-.1-.272a2.13 2.13 0 0 1 .072-1.122c.08-.22.202-.435.38-.594a.87.87 0 0 1 .563-.24a.3.3 0 0 1 .206.064c.04.044.06.104.056.164a.05.05 0 0 1 .004.04m6.43 4.653c-.015.044-.06.104-.08.14c-.042.08-.102.163-.161.235a2.6 2.6 0 0 1-.317.304c-.238.18-.503.311-.777.387a2 2 0 0 1-.487.072h-.04a.8.8 0 0 1-.515-.18a.43.43 0 0 1-.158-.25a.54.54 0 0 1 .047-.305a.78.78 0 0 1 .38-.383c.326-.16.682-.176 1.019-.16c.139.004.265.012.4.02c.107.004.218.012.325.024q.086 0 .17.012c.044.004.092-.004.135.008c.06.004.068.036.06.076" />
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
+  <article class="project" data-project="equation" data-tech="Node.js,MathJax,ffmpeg">
+    <p class="mono kicker">02.3 · son et image</p>
+    <h3>equation sound lab</h3>
+    <p class="lede">Des équations qu'on entend. On écrit y = f(x), un point parcourt la courbe et sa hauteur devient la hauteur du son.</p>
+    <p>La règle : f = 130,81 Hz × 2<sup>y</sup>. y = 0 donne un do3, +1 monte d'une octave. La courbe se trace en direct sous sa formule, typographiée par MathJax, et le lab exporte la vidéo avec ffmpeg.</p>
+    <figure class="media portrait">
+      <video loop playsinline muted preload="none" poster="assets/media/equation.jpg" data-src="assets/media/equation.mp4" aria-label="Rendu vertical d'equation sound lab"></video>
+      <button class="sound mono" type="button" aria-pressed="false">Activer le son</button>
+    </figure>
+    <p class="tech mono"><span>Node.js</span><span>MathJax</span><span>ffmpeg</span></p>
+  </article>
+</section>
 
-  <!-- Fenêtre Modale pour le CV -->
-  <div id="cvModal" class="modal fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 hidden" onclick="closeModalOutside(event)">
-    <div class="relative bg-[#1c1c1c] text-white p-6 rounded-2xl w-[90%] max-w-3xl shadow-lg border border-purple-500" onclick="event.stopPropagation()">
+<!-- ============ 03 ============ -->
+<section class="layer" id="c3" data-layer="2">
+  <header class="layer-head" data-mode="layer">
+    <p class="mono">Couche 03</p>
+    <h2>Ligne de commande</h2>
+    <p>Des binaires petits, rapides, qui font une chose et la prouvent.</p>
+  </header>
 
-      <button onclick="toggleModal('cvModal')" class="absolute top-3 right-4 text-gray-300 hover:text-purple-400 text-2xl font-bold">
-        &times;
-      </button>
+  <article class="project" data-project="c2pa" data-tech="Rust,GitHub Actions">
+    <p class="mono kicker">03.1 · CLI Linux, macOS, Windows</p>
+    <h3>c2pa-strip</h3>
+    <p class="lede">Retire les Content Credentials (C2PA) des JPEG, PNG et WebP sans réencoder un seul pixel.</p>
+    <p>Le manifeste est rangé dans une boîte JUMBF. L'outil analyse le conteneur propre à chaque format et ne retire que le magasin C2PA : en JPEG, ses segments APP11, en gardant EXIF et ICC. À chaque push, la CI signe des images avec l'outil officiel c2patool, les nettoie et vérifie que le fichier est identique à l'original non signé.</p>
+    <pre class="term mono" data-type><code>$ c2pa-strip check photo.png
+C2PA   photo.png  manifest store 100973 bytes, 1 manifest(s)
+$ c2pa-strip remove photo.png
+fixed  photo.png -> photo.clean.png  (219942 -> 118969 bytes)
+$ c2patool photo.clean.png
+Error: No claim found
+$ cmp photo.clean.png original-before-signing.png &amp;&amp; echo identical
+identical</code></pre>
+    <p class="tech mono"><span>Rust 1.85+</span><span>GitHub Actions</span><span>3 OS</span><span>MIT</span></p>
+    <p class="links"><a href="https://github.com/Ybucaille/c2pa-strip">GitHub ↗</a></p>
+  </article>
 
-      <h3 class="text-xl font-semibold mb-4 text-center">Mon CV</h3>
+  <div class="also">
+    <h3 class="mono">Aussi dans cette couche</h3>
+    <ul>
+      <li data-project="cartman" data-tech="Go,Bubble Tea,mpv"><a href="https://github.com/Ybucaille/CartmanCLI"><strong>CartmanCLI</strong></a><span>Lanceur d'épisodes en terminal : interface TUI, recherche par titre, reprise du dernier épisode, cache local, lecture dans mpv.</span><em class="mono">Go · Bubble Tea · mpv</em></li>
+      <li data-project="powerprinter" data-tech="Go"><strong>PowerPrinter</strong><span>Jeu de gestion dans le terminal, des groupes électrogènes jusqu'aux essaims de Dyson. La partie continue fermée, selon les vraies règles du jeu, et se sauvegarde toutes les 10 s ou à la réception de SIGTERM.</span><em class="mono">Go</em></li>
+    </ul>
+  </div>
+</section>
 
-      <iframe src="assets/pdfs/bucaille-yann.pdf#view=FitH&zoom=page-width" class="w-full h-[80vh] min-h-[600px] rounded-md border border-white/10"></iframe>
+<!-- ============ 04 ============ -->
+<section class="layer" id="c4" data-layer="3">
+  <header class="layer-head" data-mode="layer">
+    <p class="mono">Couche 04</p>
+    <h2>Services</h2>
+    <p>Ce qui tourne en continu sur mes machines, et ce qui le surveille.</p>
+  </header>
 
-      <div class="text-center mt-4">
-        <a href="assets/pdfs/bucaille-yann.pdf" target="_blank" rel="noopener noreferrer" download class="inline-block px-5 py-2 mt-2 rounded-full border border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white transition">
-          Télécharger le CV
-        </a>
-      </div>
+  <article class="project" data-project="homelab" data-tech="Arch Linux,QEMU/KVM,libvirt,Apache,Caddy,Docker,Forgejo,Prometheus,Grafana,Ollama">
+    <p class="mono kicker">04.1 · laboratoire personnel documenté</p>
+    <h3>Homelab Pivuche</h3>
+    <p class="lede">Un PC sous Arch Linux qui héberge mes machines virtuelles, avec un dossier technique complet : réseau, services, exploitation et migration.</p>
+    <figure class="media lab" aria-label="Schéma du laboratoire">
+      <svg viewBox="0 0 560 250" role="img" aria-labelledby="lab-t">
+        <title id="lab-t">Hôte Arch (QEMU/KVM, libvirt) relié par le pont NAT virbr0 aux VM proxy, apps01, monitor01 et ai01</title>
+        <path class="wire" id="w0" d="M280 78 V120"/>
+        <path class="wire" d="M70 120 H490"/>
+        <path class="wire" id="w1" d="M70 120 V170"/>
+        <path class="wire" id="w2" d="M210 120 V170"/>
+        <path class="wire" id="w3" d="M350 120 V170"/>
+        <path class="wire" id="w4" d="M490 120 V170"/>
+        <g class="node host"><rect x="170" y="24" width="220" height="54" rx="6"/><text x="280" y="47">PC Arch Linux</text><text class="s" x="280" y="65">QEMU/KVM · libvirt · DNS · Ollama</text></g>
+        <text class="bridge" x="290" y="112">virbr0 · NAT</text>
+        <g class="node"><rect x="10" y="170" width="120" height="70" rx="6"/><text x="70" y="196">proxy</text><text class="s" x="70" y="214">Apache · entrée</text><text class="s" x="70" y="229">dashboard</text></g>
+        <g class="node"><rect x="150" y="170" width="120" height="70" rx="6"/><text x="210" y="196">apps01</text><text class="s" x="210" y="214">Forgejo</text><text class="s" x="210" y="229">Docker</text></g>
+        <g class="node"><rect x="290" y="170" width="120" height="70" rx="6"/><text x="350" y="196">monitor01</text><text class="s" x="350" y="214">Prometheus</text><text class="s" x="350" y="229">Grafana</text></g>
+        <g class="node"><rect x="430" y="170" width="120" height="70" rx="6"/><text x="490" y="196">ai01</text><text class="s" x="490" y="214">Nexus</text><text class="s" x="490" y="229">espace de travail</text></g>
+        <circle class="pkt" r="4"><animateMotion dur="3.2s" repeatCount="indefinite" path="M280 78 V120 H70 V170"/></circle>
+        <circle class="pkt" r="4"><animateMotion dur="3.2s" begin="0.8s" repeatCount="indefinite" path="M280 78 V120 H210 V170"/></circle>
+        <circle class="pkt" r="4"><animateMotion dur="3.2s" begin="1.6s" repeatCount="indefinite" path="M280 78 V120 H350 V170"/></circle>
+        <circle class="pkt" r="4"><animateMotion dur="3.2s" begin="2.4s" repeatCount="indefinite" path="M280 78 V120 H490 V170"/></circle>
+      </svg>
+    </figure>
+    <p>Le proxy est le point d'entrée, apps01 héberge Forgejo sous Docker, monitor01 supervise avec Prometheus et Grafana, ai01 accueille Nexus. La documentation consigne aussi les incidents, comme des conteneurs relancés sans leurs ports publiés qu'il a fallu recréer.</p>
+    <p class="tech mono"><span>Arch Linux</span><span>QEMU/KVM</span><span>libvirt</span><span>Apache</span><span>Caddy</span><span>Docker</span><span>Forgejo</span><span>Prometheus</span><span>Grafana</span><span>Ollama</span></p>
+  </article>
 
-    </div>
+  <article class="project" data-project="phoenix" data-tech="Docker Swarm,Python,Nginx,JavaScript,Three.js,Tailscale">
+    <p class="mono kicker">04.2 · console Docker Swarm</p>
+    <h3>Phoenix Protocol</h3>
+    <p class="lede">Trois managers Debian, des stacks réparties sur plusieurs machines : Phoenix donne une vue claire de ce que fait le cluster.</p>
+    <p>Il observe nœuds, services, stacks, tâches et réplicas. Un watchdog sur chaque manager journalise les transitions et les erreurs d'API. Le navigateur ne lit qu'un instantané JSON, jamais le socket Docker, qui reste derrière un proxy sur le réseau overlay interne. Le tout se déploie en mode <code>global</code> sur les managers éligibles.</p>
+    <figure class="media">
+      <img src="assets/media/phoenix.webp" alt="Tableau de bord Phoenix, données de démonstration" loading="lazy" width="1200" height="750">
+      <figcaption class="mono">Capture avec des données de démonstration</figcaption>
+    </figure>
+    <p class="tech mono"><span>Docker Swarm</span><span>Python</span><span>Nginx</span><span>JavaScript</span><span>Three.js</span><span>Tailscale</span></p>
+  </article>
+</section>
+
+<!-- ============ 05 ============ -->
+<section class="layer" id="c5" data-layer="4">
+  <header class="layer-head" data-mode="layer">
+    <p class="mono">Couche 05</p>
+    <h2>Système &amp; réseau</h2>
+    <p>Une machine qu'on peut détruire et reconstruire, à l'identique, en une commande.</p>
+  </header>
+
+  <article class="project wide" data-project="debian" data-tech="Shell,Debian,QEMU/KVM,libvirt,cloud-init,nftables,fail2ban,auditd,AppArmor,Lynis,Nginx">
+    <p class="mono kicker">05.1 · infrastructure as code</p>
+    <h3>debian-rebuild</h3>
+    <p class="lede">Un serveur Debian 13 durci, créé et configuré entièrement par script sous KVM/libvirt, puis vérifié par 22 tests.</p>
+    <p>Accès par clé SSH uniquement, root refusé, <code>sudo</code> toujours avec mot de passe. Pare-feu nftables en liste blanche, fail2ban, modules noyau inutiles bloqués, auditd sur les comptes, sudo, SSH et le pare-feu, mises à jour de sécurité automatiques. Lynis note le durcissement à 84/100, contre 67 pour la même VM avant.</p>
+    <pre class="term mono tall" data-type><code>$ scripts/rebuild.sh
+>> Destruction : 1 s
+>> Déploiement : 139 s
+>> Tests : 10 s
+Reconstruction complète et testée en 2 min 30 s.
+$ scripts/test.sh
+[OK]    La VM a l'IP réservée 192.168.122.40 (bail DHCP)
+[OK]    La VM répond au ping
+[OK]    La VM sort sur Internet via le NAT (deb.debian.org)
+[OK]    La VM résout les noms DNS
+[OK]    SSH par clé fonctionne pour admin
+[OK]    SSH ne propose pas l'authentification par mot de passe
+[OK]    Connexion root refusée
+[OK]    sshd : PermitRootLogin no, PasswordAuthentication no
+[OK]    SSH : aucun transfert de ports, d'agent ni d'affichage X11
+[OK]    sudo refusé sans mot de passe
+[OK]    sudo accepté avec le mot de passe d'admin
+[OK]    nftables actif, politique d'entrée à drop
+[OK]    HTTP (80) ouvert : la page d'état répond
+[OK]    Port 8080 joignable depuis la VM elle-même
+[OK]    Port 8080 bloqué depuis l'hôte par le pare-feu
+[OK]    fail2ban surveille sshd
+[OK]    Mises à jour de sécurité automatiques activées
+[OK]    Aucune mise à jour en attente
+[OK]    Noyau : filtrage anti-usurpation, redirections refusées (sysctl)
+[OK]    Modules inutiles bloqués (stockage USB, dccp, sctp...)
+[OK]    AppArmor actif
+[OK]    auditd surveille comptes, sudo, SSH et pare-feu
+# Lynis 3.1.4 : 67/100 avant durcissement, 84/100 après</code></pre>
+    <p class="tech mono"><span>Bash</span><span>Debian 13</span><span>KVM/libvirt</span><span>cloud-init</span><span>nftables</span><span>fail2ban</span><span>auditd</span><span>AppArmor</span><span>Lynis</span><span>nginx</span></p>
+    <p class="links"><a href="https://github.com/Ybucaille/debian-rebuild">GitHub ↗</a></p>
+  </article>
+</section>
+
+<!-- ============ index ============ -->
+<section class="tech-index" data-mode="tech" aria-labelledby="ti-t">
+  <p class="mono">Index</p>
+  <h2 id="ti-t">Les technologies, et où elles vivent</h2>
+  <p>Survolez ou sélectionnez une technologie : les projets qui l'utilisent s'allument dans la pile.</p>
+  <ul class="ti-list mono" id="ti-list"></ul>
+  <p class="ti-out mono" id="ti-out" aria-live="polite">&nbsp;</p>
+</section>
+
+<!-- ============ 06 ============ -->
+<section class="layer" id="c6" data-layer="5">
+  <header class="layer-head" data-mode="layer">
+    <p class="mono">Couche 06</p>
+    <h2>Socle</h2>
+    <p>Ce sur quoi tout le reste est posé : ma formation, mes premiers projets et mes certifications.</p>
+  </header>
+
+  <div class="path" data-mode="layer">
+    <ol>
+      <li data-project="hosting" data-label="Hosting-Yann" data-tech="PHP,CSS,JavaScript"><span class="mono">Lycée</span><strong>Spécialité NSI, projet de fin d'année du bac</strong><span>Hosting-Yann : un prototype d'hébergeur de serveurs de jeu, en PHP, CSS et JavaScript.</span></li>
+      <li data-project="fortytwo" data-label="42 · ft_printf" data-tech="C,Makefile"><span class="mono">42</span><strong>Une année à l'école 42</strong><span>La Piscine C, puis ft_printf : réécrire <code>printf</code> en C, avec son Makefile.</span></li>
+      <li><span class="mono">Autodidacte</span><strong>Linux, systèmes, réseaux et IA locale</strong><span>Appris en construisant les outils présentés plus haut.</span></li>
+      <li><span class="mono">Aujourd'hui</span><strong>TSSR à 2i Academy</strong><span>Technicien supérieur systèmes et réseaux, Bac+2 en alternance, avec l'envie de poursuivre vers l'IA et le Big Data.</span></li>
+    </ol>
   </div>
 
-  <!-- Fenêtre Modale pour les projets -->
-  <div id="projectsModal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70" onclick="closeModalOutside(event)">
-    <div class="bg-[#1e1e2f] text-white p-6 rounded-2xl shadow-xl max-w-5xl w-full relative border border-purple-500 max-h-[90vh] overflow-y-auto" style="overscroll-behavior: contain;" onclick="event.stopPropagation()">
-      <button onclick="toggleModal('projectsModal')" class="absolute top-4 right-6 text-gray-300 text-xl hover:text-red-500">&times;</button>
-      <h2 class="text-2xl font-bold mb-6">Mes Projets</h2>
-      <div id="projectsContainer" class="grid md:grid-cols-3 sm:grid-cols-2 gap-6">
-        <!-- Les cartes de projets seront insérées ici dynamiquement -->
-      </div>
-    </div>
+  <div class="certs" data-mode="certs">
+    <h3>Certifications <span class="mono">11</span></h3>
+    <ul>
+      <li><span class="mono">Google · Coursera</span><b>Google Cybersecurity</b><i class="mono">2026</i><a href="https://www.coursera.org/verify/professional-cert/QP4A6JIYNVJS">vérifier ↗</a></li>
+      <li><span class="mono">CNIL</span><b>Protection des données (RGPD)</b><i class="mono">2025</i><a href="assets/pdf/Certificat_RGPD.pdf">PDF ↗</a></li>
+      <li><span class="mono">ANSSI</span><b>SecNumacadémie</b><i class="mono">2025</i><a href="assets/pdf/Certificat_SecNum.pdf">PDF ↗</a></li>
+      <li><span class="mono">Cisco</span><b>Ethical Hacker</b><i class="mono">2025</i><a href="https://www.credly.com/badges/844a0702-e748-4107-b5fe-bf75a2514399/public_url">vérifier ↗</a></li>
+      <li><span class="mono">Cisco</span><b>Introduction to Cybersecurity</b><i class="mono">2025</i><a href="https://www.credly.com/badges/6ac6fbdd-0dae-4283-bc36-4c4a88ff54e7/public_url">vérifier ↗</a></li>
+      <li><span class="mono">Cisco</span><b>Endpoint Security</b><i class="mono">2025</i><a href="https://www.credly.com/badges/ea20936a-340f-43d7-aacf-20d7d3c264bf/public_url">vérifier ↗</a></li>
+      <li><span class="mono">Cisco</span><b>Linux Unhatched</b><i class="mono">2025</i><a href="https://www.credly.com/badges/fb0f5b17-09d9-4968-b4fa-0d8cb23bf447/public_url">vérifier ↗</a></li>
+      <li><span class="mono">Cisco</span><b>Computer Hardware Basics</b><i class="mono">2025</i><a href="https://www.credly.com/badges/3a22b18b-0b46-48b1-8588-8f1aea782f66/public_url">vérifier ↗</a></li>
+      <li><span class="mono">Cisco</span><b>Introduction to Modern AI</b><i class="mono">2025</i><a href="https://www.credly.com/badges/a1686a18-7bb2-478a-bc9b-9a05163a034a/public_url">vérifier ↗</a></li>
+      <li><span class="mono">Cisco</span><b>Introduction to Data Science</b><i class="mono">2025</i><a href="https://www.credly.com/badges/da6104bf-268e-4b8c-a302-7dc0fd3435e2/public_url">vérifier ↗</a></li>
+      <li><span class="mono">Cisco</span><b>Data Analytics Essentials</b><i class="mono">2025</i><a href="https://www.credly.com/badges/1052776f-c472-42d9-8378-cfab3ff7d29f/public_url">vérifier ↗</a></li>
+    </ul>
+    <p class="mono small"><a href="https://www.credly.com/users/ybucaille">Profil Credly ↗</a> · <a href="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=6312186">Badge TryHackMe ↗</a></p>
   </div>
+</section>
 
-  <!-- Fenêtre Modale pour les certifs -->
-  <div id="certModal" class="modal fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50 flex items-center justify-center" onclick="closeModalOutside(event)">
-    <div class="bg-[#1e1e2f] text-white p-6 rounded-2xl shadow-xl max-w-5xl w-full relative border border-purple-500 max-h-[90vh] overflow-y-auto" style="overscroll-behavior: contain;" onclick="event.stopPropagation()">
-      <!-- Header -->
-      <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold">Mes Certifications</h2>
-        <button onclick="toggleModal('certModal')" class="text-xl font-bold hover:text-purple-400">&times;</button>
-      </div>
-
-      <!-- Container pour toutes les certifications -->
-      <div id="certificationsContainer" class="flex flex-wrap gap-4 justify-start">
-        
-        <!-- Cartes ajoutées dynamiquement -->
-
-      </div>
-    </div>
+<!-- ============ alternance ============ -->
+<section class="job" id="alternance" data-mode="job" aria-labelledby="job-t">
+  <div class="tape mono" aria-hidden="true"><div><span>alternance TSSR · calvados ou télétravail · 3 semaines en entreprise, 1 en formation · </span><span>alternance TSSR · calvados ou télétravail · 3 semaines en entreprise, 1 en formation · </span></div></div>
+  <div class="job-in">
+    <p class="mono">Couche 07 · à construire</p>
+    <h2 id="job-t">Il manque une couche à la pile : votre entreprise.</h2>
+    <dl class="mono">
+      <div><dt>Formation</dt><dd>TSSR, technicien supérieur systèmes et réseaux · 2i Academy</dd></div>
+      <div><dt>Rythme</dt><dd>3 semaines en entreprise, 1 semaine en formation</dd></div>
+      <div><dt>Lieu</dt><dd>Calvados, ou télétravail</dd></div>
+      <div><dt>Début</dt><dd>avant le 31 décembre</dd></div>
+    </dl>
+    <p class="job-cta"><a class="pill dark" href="mailto:bucaille.yann14@icloud.com?subject=Alternance%20TSSR">M'écrire</a> <a class="pill line" href="assets/pdf/bucaille-yann.pdf">Mon CV (PDF)</a></p>
   </div>
-  
-  <div id="tryhackmeWidget">
-  <iframe 
-    src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=6312186"
-    title="TryHackMe Badge"
-    loading="lazy"
-    style="border:none; width: 330px; height: 89px;"
-  ></iframe>
-</div>
+</section>
 
-  <button id="scrollToTopBtn" title="Remonter en haut">
-    <i class="fas fa-chevron-up"></i>
-  </button>
+<!-- ============ contact ============ -->
+<section class="contact" id="contact" data-mode="end">
+  <figure class="cv">
+    <a href="assets/pdf/bucaille-yann.pdf"><img src="assets/media/cv.webp" alt="Première page du CV de Yann Bucaille" loading="lazy" width="640" height="905"></a>
+  </figure>
+  <div>
+    <p class="mono">Contact</p>
+    <h2><a href="mailto:bucaille.yann14@icloud.com">bucaille.yann14@icloud.com</a></h2>
+    <p><button class="copy mono" type="button" data-copy="bucaille.yann14@icloud.com">Copier l'adresse</button></p>
+    <ul class="mono">
+      <li><a href="https://www.linkedin.com/in/yann-bucaille-235057230/">LinkedIn ↗</a></li>
+      <li><a href="https://github.com/Ybucaille">GitHub ↗</a></li>
+      <li><a href="assets/pdf/bucaille-yann.pdf">CV en PDF ↗</a></li>
+    </ul>
+  </div>
+</section>
 
-  <script src="assets/js/script.js"></script>
-  <script src="assets/js/shooting_stars.js"></script>
+</main>
+<dialog class="cvd" aria-labelledby="cvd-t">
+  <div class="cvd-bar">
+    <p id="cvd-t">CV · Yann Bucaille</p>
+    <a class="mono" href="assets/pdf/bucaille-yann.pdf" download>Télécharger</a>
+    <a class="mono" href="assets/pdf/bucaille-yann.pdf" target="_blank" rel="noopener" data-raw>Nouvel onglet ↗</a>
+    <button class="cvd-x" type="button" aria-label="Fermer">×</button>
+  </div>
+  <div class="cvd-body"></div>
+</dialog>
+<footer class="foot mono"><span>Yann Bucaille · 2026</span><span>HTML, CSS, Three.js · pas de traceur</span></footer>
 </body>
 </html>
-
