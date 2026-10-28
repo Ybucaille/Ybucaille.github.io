@@ -133,7 +133,15 @@ function show(t) {
   if (!t) { setHits(null); out.innerHTML = '&nbsp;'; return; }
   const p = techMap.get(t);
   setHits(new Set(p.map(x => x.id)));
-  out.textContent = `${t} → ${p.map(x => x.name).join(', ')}`;
+  const head = document.createElement('span');
+  head.textContent = `${t} →`;
+  const links = p.map(x => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.textContent = x.name;
+    b.addEventListener('click', () => document.querySelector(`[data-project="${x.id}"]`)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }));
+    return b;
+  });
+  out.replaceChildren(head, ...links);
 }
 techs.forEach(([t, p]) => {
   const li = document.createElement('li');
@@ -195,34 +203,116 @@ function setTheme(t, save) {
 setTheme(root.dataset.theme || 'light');
 themeBtn.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', true));
 
-// ---------- CV in a dialog ----------
+// ---------- pull requests, live from GitHub (static list stays if the API fails) ----------
+const prs = document.querySelector('.prs');
+if (prs) {
+  const list = prs.querySelector('.gitlog');
+  const more = prs.querySelector('.prs-more');
+  const VISIBLE = 5;
+  const setMore = () => {
+    const extra = list.children.length - VISIBLE;
+    more.hidden = extra <= 0;
+    more.textContent = prs.classList.contains('open') ? 'Réduire' : `Afficher ${extra} PR de plus`;
+  };
+  more.addEventListener('click', () => { prs.classList.toggle('open'); setMore(); });
+  setMore();
+  const render = items => {
+    const rows = items.map(it => {
+      const merged = !!it.pull_request?.merged_at;
+      const repo = it.repository_url.split('/repos/')[1];
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = it.html_url; a.target = '_blank'; a.rel = 'noopener';
+      const b = document.createElement('b');
+      b.textContent = merged ? 'fusionnée' : it.draft ? 'brouillon' : 'ouverte';
+      if (merged) b.className = 'ok';
+      const i = document.createElement('i');
+      i.textContent = `${repo} #${it.number}`;
+      const t = document.createElement('span');
+      t.textContent = it.title;
+      a.append(b, i, t); li.append(a);
+      return li;
+    });
+    list.replaceChildren(...rows);
+    prs.querySelector('[data-prs-count]').textContent = rows.length;
+    const merged = items.filter(it => it.pull_request?.merged_at).length;
+    prs.querySelector('[data-prs-merged]').textContent = merged;
+    prs.querySelector('[data-prs-merged-l]').textContent = merged > 1 ? 'fusionnées' : 'fusionnée';
+    prs.classList.add('live');
+    setMore();
+  };
+  const KEY = 'prs-cache', TTL = 30 * 60e3;
+  let cached = null;
+  try { cached = JSON.parse(localStorage.getItem(KEY)); } catch {}
+  if (cached && Date.now() - cached.t < TTL) render(cached.items);
+  else {
+    const who = prs.dataset.author;
+    const q = encodeURIComponent(`author:${who} type:pr -user:${who}`);
+    fetch(`https://api.github.com/search/issues?q=${q}&sort=created&order=desc&per_page=100`, { headers: { Accept: 'application/vnd.github+json' } })
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(d => {
+        // closed without merge are left out
+        const items = d.items.filter(it => it.state === 'open' || it.pull_request?.merged_at)
+          .map(({ html_url, number, title, draft, state, repository_url, pull_request }) => ({ html_url, number, title, draft, state, repository_url, pull_request: { merged_at: pull_request?.merged_at } }));
+        if (!items.length) return;
+        render(items);
+        try { localStorage.setItem(KEY, JSON.stringify({ t: Date.now(), items })); } catch {}
+      })
+      .catch(() => {});
+  }
+}
+
+// ---------- TryHackMe badge: fixed-size iframe scaled to its card ----------
+const thm = document.querySelector('.thm-frame');
+const fitThm = () => thm.style.setProperty('--s', Math.min(1, thm.clientWidth / 327).toFixed(3));
+if (thm) { fitThm(); addEventListener('resize', fitThm); }
+
+// ---------- documents in a dialog (CV, certificates) ----------
+const DOCS = {
+  'assets/pdf/bucaille-yann.pdf': { kicker: 'Curriculum vitæ', title: 'CV · Yann Bucaille', img: 'assets/media/cv-full.webp', w: 1406, h: 1988, embed: true },
+  'assets/pdf/Certificat_RGPD.pdf': { kicker: 'Certificat · CNIL', title: 'Protection des données (RGPD)', img: 'assets/media/cert-rgpd.webp', w: 1988, h: 1406 },
+  'assets/pdf/Certificat_SecNum.pdf': { kicker: 'Certificat · ANSSI', title: 'SecNumacadémie', img: 'assets/media/cert-secnum.webp', w: 1988, h: 1406 },
+};
 const cvd = document.querySelector('.cvd');
 const cvBody = cvd.querySelector('.cvd-body');
-const pdf = 'assets/pdf/bucaille-yann.pdf';
-function openCv() {
-  if (!cvBody.firstChild) {
-    if (matchMedia('(pointer: fine) and (min-width: 861px)').matches) {
-      const f = document.createElement('iframe');
-      f.src = pdf + '#view=FitH&toolbar=0';
-      f.title = 'CV de Yann Bucaille (PDF)';
-      cvBody.append(f);
-    } else {
-      const img = document.createElement('img');
-      img.src = 'assets/media/cv-full.webp'; img.alt = 'CV de Yann Bucaille'; img.width = 1406; img.height = 1988;
-      cvBody.append(img);
-    }
+const docNodes = new Map();
+function docNode(href, d) {
+  if (docNodes.has(href)) return docNodes.get(href);
+  let node;
+  if (d.embed && matchMedia('(pointer: fine) and (min-width: 861px)').matches) {
+    node = document.createElement('iframe');
+    node.src = href + '#view=FitH&toolbar=0';
+    node.title = d.title + ' (PDF)';
+  } else {
+    node = document.createElement('img');
+    node.src = d.img; node.alt = d.title; node.width = d.w; node.height = d.h;
   }
+  docNodes.set(href, node);
+  return node;
+}
+function openDoc(href) {
+  const d = DOCS[href];
+  cvd.querySelector('#cvd-k').textContent = d.kicker;
+  cvd.querySelector('#cvd-t').textContent = d.title;
+  cvd.querySelectorAll('.cvd-act').forEach(a => { a.href = href; });
+  cvd.classList.toggle('wide', d.w > d.h);
+  cvBody.replaceChildren(docNode(href, d));
+  cvBody.scrollTop = 0;
   cvd.showModal();
   root.classList.add('modal');
 }
 cvd.addEventListener('close', () => root.classList.remove('modal'));
 cvd.querySelector('.cvd-x').addEventListener('click', () => cvd.close());
 cvd.addEventListener('click', e => { if (e.target === cvd) cvd.close(); });
-$$(`a[href="${pdf}"]:not([download]):not([data-raw])`).forEach(a => a.addEventListener('click', e => {
-  if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
-  e.preventDefault();
-  openCv();
-}));
+$$('a[href$=".pdf"]:not([download]):not([data-raw])').forEach(a => {
+  const href = a.getAttribute('href');
+  if (!DOCS[href]) return;
+  a.addEventListener('click', e => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    e.preventDefault();
+    openDoc(href);
+  });
+});
 
 // ---------- 3D stack (progressive enhancement) ----------
 async function boot() {
@@ -230,7 +320,7 @@ async function boot() {
   try {
     const probe = document.createElement('canvas').getContext('webgl2');
     if (!probe) return;
-    const { initStack } = await import('./stack.js');
+    const { initStack } = await import('./stack.js?v=11');
     await document.fonts.ready;
     const layers = layerSections.map(s => $$('[data-project]', s).map(el => el.dataset.project));
     const labels = Object.fromEntries($$('[data-project]').map(el => [el.dataset.project, el.dataset.label || el.querySelector('h3, strong')?.textContent.trim()]));

@@ -9,18 +9,25 @@
 <script>try{var t=localStorage.getItem("theme");if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="light"}</script>
 <meta property="og:title" content="Yann Bucaille — La pile">
 <meta property="og:description" content="Serveurs, outils, interfaces et IA locale, rangés par couche. En recherche d'alternance TSSR.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ybucaille.github.io/">
+<meta property="og:image" content="https://ybucaille.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Yann Bucaille, technicien systèmes et réseaux : une pile de serveurs en 3D, une couche par domaine">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/site.css?v=11">
 <script type="importmap">
 { "imports": {
   "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js",
   "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
 } }
 </script>
-<script type="module" src="assets/js/main.js"></script>
+<script type="module" src="assets/js/main.js?v=11"></script>
 </head>
 <body>
 <a class="skip" href="#c1">Aller aux projets</a>
@@ -30,8 +37,8 @@
   <p class="where mono" aria-live="polite"><span class="where-n">00</span> <span class="where-t">surface</span></p>
   <nav class="top-links" aria-label="Raccourcis">
     <button class="theme" type="button" aria-label="Passer au thème sombre"><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="sun" cx="12" cy="12" r="4.2"/><path class="moon" d="M19.5 14.2A7.8 7.8 0 1 1 9.8 4.5a6.2 6.2 0 0 0 9.7 9.7z"/><g class="rays"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
-    <a href="#alternance">Alternance</a>
-    <a href="assets/pdf/bucaille-yann.pdf">CV</a>
+    <a class="avail" href="#alternance"><span class="dot" aria-hidden="true"></span>Disponible pour une alternance</a>
+    <a href="assets/pdf/bucaille-yann.pdf" target="_blank" rel="noopener">CV</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -76,7 +83,7 @@
       <figcaption class="mono">Cockpit « Horizon » · Ctrl+K ouvre la palette de commandes · le code reste privé</figcaption>
     </figure>
     <p class="tech mono"><span>Python</span><span>FastAPI</span><span>SQLite</span><span>CLI Node.js</span><span>Next.js</span><span>uv</span><span>Playwright</span></p>
-    <p class="links"><a href="https://github.com/Ybucaille/Nexus">La vision du projet sur GitHub ↗</a></p>
+    <p class="links"><a href="https://github.com/Ybucaille/Nexus" target="_blank" rel="noopener">La vision du projet sur GitHub ↗</a></p>
   </article>
 
   <article class="project" data-project="observatory" data-tech="TypeScript,Next.js,Tailwind CSS,FastAPI,Python,SQLite">
@@ -89,7 +96,7 @@
       <img src="assets/media/observatory-trace.webp" alt="Frise chronologique d'une trace d'exécution" loading="lazy" width="1200" height="750">
     </figure>
     <p class="tech mono"><span>TypeScript</span><span>Next.js</span><span>Tailwind CSS</span><span>FastAPI</span><span>Python</span><span>SQLite</span></p>
-    <p class="links"><a href="https://github.com/Ybucaille/NexusObservatory">GitHub ↗</a></p>
+    <p class="links"><a href="https://github.com/Ybucaille/NexusObservatory" target="_blank" rel="noopener">GitHub ↗</a></p>
   </article>
 
   <article class="project" data-project="livequill" data-tech="Python,PyPI,GitHub Actions">
@@ -102,7 +109,7 @@
       <figcaption class="mono">Premier lancement réel avec Claude Code · accéléré ×3</figcaption>
     </figure>
     <p class="tech mono"><span>Python</span><span>0 dépendance</span><span>PyPI</span><span>GitHub Actions</span></p>
-    <p class="links"><a href="https://github.com/Ybucaille/livequill">GitHub ↗</a> <a href="https://ybucaille.github.io/livequill/">Site du projet ↗</a></p>
+    <p class="links"><a href="https://github.com/Ybucaille/livequill" target="_blank" rel="noopener">GitHub ↗</a> <a href="https://ybucaille.github.io/livequill/" target="_blank" rel="noopener">Site du projet ↗</a></p>
   </article>
 
   <div class="also">
@@ -111,8 +118,8 @@
       <li data-project="aera" data-tech="TypeScript,Vite,Canvas 2D,Node.js,Fastify"><strong>AERA</strong><span>Prototype : la webcam détecte en local deux mains et leurs 21 articulations ; un pincement pouce-index saisit une fenêtre et la déplace.</span><em class="mono">TypeScript · Vite · Canvas 2D · Fastify</em></li>
       <li data-project="iris" data-tech="Python,Flask"><strong>Iris</strong><span>Reconstruction de Cats Identifier : détection et identification séparées, modèle entraîné puis évalué avant toute promotion explicite.</span><em class="mono">Python · Flask</em></li>
       <li data-project="orca" data-tech="Python,Docker,SWE-bench"><strong>Orca Compute</strong><span>Banc d'essai sur des cas SWE-bench réels : préparation des dépôts, notation dans Docker, mise en quarantaine des cas ambigus.</span><em class="mono">Python · Docker · SWE-bench</em></li>
-      <li data-project="mnemonic" data-tech="Python,FAISS"><a href="https://github.com/Ybucaille/Mnemonic"><strong>Mnemonic</strong></a><span>Mémoire vectorielle locale : retrouver un souvenir par similarité de sens, stocké en JSONL ou dans un index FAISS.</span><em class="mono">Python · FAISS</em></li>
-      <li data-project="nexnotes" data-tech="Python,Whisper,CustomTkinter"><a href="https://github.com/Ybucaille/NexNotes"><strong>NexNotes</strong></a><span>Notes audio et texte, transcription locale par Whisper, sans cloud.</span><em class="mono">Python · Whisper · CustomTkinter</em></li>
+      <li data-project="mnemonic" data-tech="Python,FAISS"><a href="https://github.com/Ybucaille/Mnemonic" target="_blank" rel="noopener"><strong>Mnemonic</strong></a><span>Mémoire vectorielle locale : retrouver un souvenir par similarité de sens, stocké en JSONL ou dans un index FAISS.</span><em class="mono">Python · FAISS</em></li>
+      <li data-project="nexnotes" data-tech="Python,Whisper,CustomTkinter"><a href="https://github.com/Ybucaille/NexNotes" target="_blank" rel="noopener"><strong>NexNotes</strong></a><span>Notes audio et texte, transcription locale par Whisper, sans cloud.</span><em class="mono">Python · Whisper · CustomTkinter</em></li>
     </ul>
   </div>
 </section>
@@ -135,23 +142,31 @@
       <figcaption class="mono">Préréglages woofer · nebula · shards · ripple</figcaption>
     </figure>
     <p class="tech mono"><span>Rust</span><span>wgpu</span><span>Vulkan</span><span>PipeWire</span><span>Wayland</span></p>
-    <p class="links"><a href="https://github.com/Ybucaille/woofer">GitHub ↗</a> <a href="https://ybucaille.github.io/woofer/">Démo en ligne ↗</a></p>
+    <p class="links"><a href="https://github.com/Ybucaille/woofer" target="_blank" rel="noopener">GitHub ↗</a> <a href="https://ybucaille.github.io/woofer/" target="_blank" rel="noopener">Démo en ligne ↗</a></p>
   </article>
 
-  <article class="project" data-project="caelestia" data-tech="QML,Quickshell,Hyprland,GLSL,Shell">
+  <article class="project" data-project="caelestia" data-label="Open source" data-tech="QML,Quickshell,Hyprland,GLSL,Shell,Rust">
     <p class="mono kicker">02.2 · contributions open source</p>
-    <h3>Caelestia shell</h3>
-    <p class="lede">Je contribue au shell de bureau Caelestia (Quickshell sur Hyprland) en contributeur externe.</p>
-    <ol class="gitlog mono">
-      <li><b class="ok">fusionnée</b> #2186 fix(drawers): keep sidebar open when hovering utilities</li>
-      <li><b>ouverte</b> #2217 fix(shaders): add GLSL ES 100 to wallpaper transition shaders</li>
-      <li><b>ouverte</b> #2214 feat(bar): add optional application icons to workspaces</li>
-      <li><b>ouverte</b> #2179 feat(launcher): add prefixed web searches</li>
-      <li><b>ouverte</b> #2178 fix(services): destroy completed nmcli command processes</li>
-    </ol>
-    <p>À côté, l'extension <a href="https://github.com/Ybucaille/caelestia-websearch">caelestia-websearch</a> ajoute la recherche web au lanceur (Google, YouTube, Wikipédia, GitHub, Reddit, Maps), sans toucher au lancement d'applications, avec une installation locale sauvegardée et une désinstallation propre.</p>
-    <p class="tech mono"><span>QML</span><span>Quickshell</span><span>Hyprland</span><span>GLSL</span><span>Shell</span></p>
-    <p class="links"><a href="https://github.com/caelestia-dots/shell/pulls?q=is%3Apr+author%3AYbucaille">Mes PR ↗</a></p>
+    <h3>Open source</h3>
+    <p class="lede">Je contribue en externe aux projets que j'utilise tous les jours, à commencer par le shell de bureau Caelestia (Quickshell sur Hyprland).</p>
+    <div class="prs" data-author="Ybucaille">
+      <p class="mono prs-meta">Pull requests · <span data-prs-count>9</span> · <b class="prs-merged"><span data-prs-merged>1</span> <span data-prs-merged-l>fusionnée</span></b> <span class="prs-live">synchronisé avec GitHub</span></p>
+      <ol class="gitlog mono">
+        <li><a href="https://github.com/uutils/coreutils/pull/15928" target="_blank" rel="noopener"><b>ouverte</b><i>uutils/coreutils #15928</i><span>install: compare the owner with -C even when only -g is given</span></a></li>
+        <li><a href="https://github.com/uutils/coreutils/pull/15927" target="_blank" rel="noopener"><b>ouverte</b><i>uutils/coreutils #15927</i><span>du: saturate size totals instead of wrapping on overflow</span></a></li>
+        <li><a href="https://github.com/uutils/coreutils/pull/15926" target="_blank" rel="noopener"><b>ouverte</b><i>uutils/coreutils #15926</i><span>dd: keep O_APPEND on stdout when applying oflag</span></a></li>
+        <li><a href="https://github.com/uutils/coreutils/pull/15925" target="_blank" rel="noopener"><b>ouverte</b><i>uutils/coreutils #15925</i><span>unexpand: convert leading multibyte blanks on newline-terminated lines</span></a></li>
+        <li><a href="https://github.com/caelestia-dots/shell/pull/2217" target="_blank" rel="noopener"><b>ouverte</b><i>caelestia-dots/shell #2217</i><span>fix(shaders): add GLSL ES 100 to wallpaper transition shaders</span></a></li>
+        <li><a href="https://github.com/caelestia-dots/shell/pull/2214" target="_blank" rel="noopener"><b>ouverte</b><i>caelestia-dots/shell #2214</i><span>feat(bar): add optional application icons to workspaces</span></a></li>
+        <li><a href="https://github.com/caelestia-dots/shell/pull/2186" target="_blank" rel="noopener"><b class="ok">fusionnée</b><i>caelestia-dots/shell #2186</i><span>fix(drawers): keep sidebar open when hovering utilities</span></a></li>
+        <li><a href="https://github.com/caelestia-dots/shell/pull/2179" target="_blank" rel="noopener"><b>ouverte</b><i>caelestia-dots/shell #2179</i><span>feat(launcher): add prefixed web searches</span></a></li>
+        <li><a href="https://github.com/caelestia-dots/shell/pull/2178" target="_blank" rel="noopener"><b>ouverte</b><i>caelestia-dots/shell #2178</i><span>fix(services): destroy completed nmcli command processes</span></a></li>
+      </ol>
+      <button class="prs-more mono" type="button" hidden></button>
+    </div>
+    <p>À côté, l'extension <a href="https://github.com/Ybucaille/caelestia-websearch" target="_blank" rel="noopener">caelestia-websearch</a> ajoute la recherche web au lanceur Caelestia (Google, YouTube, Wikipédia, GitHub, Reddit, Maps), sans toucher au lancement d'applications, avec une installation locale sauvegardée et une désinstallation propre.</p>
+    <p class="tech mono"><span>QML</span><span>Quickshell</span><span>Hyprland</span><span>GLSL</span><span>Shell</span><span>Rust</span></p>
+    <p class="links"><a href="https://github.com/search?q=is%3Apr+author%3AYbucaille+-user%3AYbucaille&amp;type=pullrequests&amp;s=created&amp;o=desc" target="_blank" rel="noopener">Toutes mes PR ↗</a></p>
   </article>
 
   <article class="project" data-project="equation" data-tech="Node.js,MathJax,ffmpeg">
@@ -160,8 +175,9 @@
     <p class="lede">Des équations qu'on entend. On écrit y = f(x), un point parcourt la courbe et sa hauteur devient la hauteur du son.</p>
     <p>La règle : f = 130,81 Hz × 2<sup>y</sup>. y = 0 donne un do3, +1 monte d'une octave. La courbe se trace en direct sous sa formule, typographiée par MathJax, et le lab exporte la vidéo avec ffmpeg.</p>
     <figure class="media portrait">
-      <video loop playsinline muted preload="none" poster="assets/media/equation.jpg" data-src="assets/media/equation.mp4" aria-label="Rendu vertical d'equation sound lab"></video>
+      <video loop playsinline muted preload="none" poster="assets/media/equation.jpg" data-src="assets/media/equation.mp4" aria-label="Great Fairy Fountain rejouée à la harpe par equation sound lab : chaque note est une équation tracée en direct"></video>
       <button class="sound mono" type="button" aria-pressed="false">Activer le son</button>
+      <figcaption class="mono">Great Fairy Fountain (Koji Kondo), reprise à la harpe · une corde pincée Karplus-Strong par voix</figcaption>
     </figure>
     <p class="tech mono"><span>Node.js</span><span>MathJax</span><span>ffmpeg</span></p>
   </article>
@@ -189,14 +205,14 @@ Error: No claim found
 $ cmp photo.clean.png original-before-signing.png &amp;&amp; echo identical
 identical</code></pre>
     <p class="tech mono"><span>Rust 1.85+</span><span>GitHub Actions</span><span>3 OS</span><span>MIT</span></p>
-    <p class="links"><a href="https://github.com/Ybucaille/c2pa-strip">GitHub ↗</a></p>
+    <p class="links"><a href="https://github.com/Ybucaille/c2pa-strip" target="_blank" rel="noopener">GitHub ↗</a></p>
   </article>
 
   <div class="also">
     <h3 class="mono">Aussi dans cette couche</h3>
     <ul>
-      <li data-project="cartman" data-tech="Go,Bubble Tea,mpv"><a href="https://github.com/Ybucaille/CartmanCLI"><strong>CartmanCLI</strong></a><span>Lanceur d'épisodes en terminal : interface TUI, recherche par titre, reprise du dernier épisode, cache local, lecture dans mpv.</span><em class="mono">Go · Bubble Tea · mpv</em></li>
-      <li data-project="powerprinter" data-tech="Go"><strong>PowerPrinter</strong><span>Jeu de gestion dans le terminal, des groupes électrogènes jusqu'aux essaims de Dyson. La partie continue fermée, selon les vraies règles du jeu, et se sauvegarde toutes les 10 s ou à la réception de SIGTERM.</span><em class="mono">Go</em></li>
+      <li data-project="cartman" data-tech="Go,Bubble Tea,mpv"><a href="https://github.com/Ybucaille/CartmanCLI" target="_blank" rel="noopener"><strong>CartmanCLI</strong></a><span>Lanceur d'épisodes en terminal : interface TUI, recherche par titre, reprise du dernier épisode, cache local, lecture dans mpv.</span><em class="mono">Go · Bubble Tea · mpv</em><video class="also-vid" muted loop playsinline preload="none" poster="assets/media/cartman.jpg" data-src="assets/media/cartman.mp4" aria-label="CartmanCLI : choix d'une saison puis navigation dans les épisodes"></video></li>
+      <li data-project="powerprinter" data-tech="Go"><strong>PowerPrinter</strong><span>Jeu de gestion dans le terminal, des groupes électrogènes jusqu'aux essaims de Dyson. La partie continue fermée, selon les vraies règles du jeu, et se sauvegarde toutes les 10 s ou à la réception de SIGTERM.</span><em class="mono">Go</em><video class="also-vid" muted loop playsinline preload="none" poster="assets/media/powerprinter.jpg" data-src="assets/media/powerprinter.mp4" aria-label="PowerPrinter : bilan hors ligne, chaîne de production puis carte des étoiles"></video></li>
     </ul>
   </div>
 </section>
@@ -294,7 +310,7 @@ $ scripts/test.sh
 [OK]    auditd surveille comptes, sudo, SSH et pare-feu
 # Lynis 3.1.4 : 67/100 avant durcissement, 84/100 après</code></pre>
     <p class="tech mono"><span>Bash</span><span>Debian 13</span><span>KVM/libvirt</span><span>cloud-init</span><span>nftables</span><span>fail2ban</span><span>auditd</span><span>AppArmor</span><span>Lynis</span><span>nginx</span></p>
-    <p class="links"><a href="https://github.com/Ybucaille/debian-rebuild">GitHub ↗</a></p>
+    <p class="links"><a href="https://github.com/Ybucaille/debian-rebuild" target="_blank" rel="noopener">GitHub ↗</a></p>
   </article>
 </section>
 
@@ -327,51 +343,70 @@ $ scripts/test.sh
   <div class="certs" data-mode="certs">
     <h3>Certifications <span class="mono">11</span></h3>
     <ul>
-      <li><span class="mono">Google · Coursera</span><b>Google Cybersecurity</b><i class="mono">2026</i><a href="https://www.coursera.org/verify/professional-cert/QP4A6JIYNVJS">vérifier ↗</a></li>
-      <li><span class="mono">CNIL</span><b>Protection des données (RGPD)</b><i class="mono">2025</i><a href="assets/pdf/Certificat_RGPD.pdf">PDF ↗</a></li>
-      <li><span class="mono">ANSSI</span><b>SecNumacadémie</b><i class="mono">2025</i><a href="assets/pdf/Certificat_SecNum.pdf">PDF ↗</a></li>
-      <li><span class="mono">Cisco</span><b>Ethical Hacker</b><i class="mono">2025</i><a href="https://www.credly.com/badges/844a0702-e748-4107-b5fe-bf75a2514399/public_url">vérifier ↗</a></li>
-      <li><span class="mono">Cisco</span><b>Introduction to Cybersecurity</b><i class="mono">2025</i><a href="https://www.credly.com/badges/6ac6fbdd-0dae-4283-bc36-4c4a88ff54e7/public_url">vérifier ↗</a></li>
-      <li><span class="mono">Cisco</span><b>Endpoint Security</b><i class="mono">2025</i><a href="https://www.credly.com/badges/ea20936a-340f-43d7-aacf-20d7d3c264bf/public_url">vérifier ↗</a></li>
-      <li><span class="mono">Cisco</span><b>Linux Unhatched</b><i class="mono">2025</i><a href="https://www.credly.com/badges/fb0f5b17-09d9-4968-b4fa-0d8cb23bf447/public_url">vérifier ↗</a></li>
-      <li><span class="mono">Cisco</span><b>Computer Hardware Basics</b><i class="mono">2025</i><a href="https://www.credly.com/badges/3a22b18b-0b46-48b1-8588-8f1aea782f66/public_url">vérifier ↗</a></li>
-      <li><span class="mono">Cisco</span><b>Introduction to Modern AI</b><i class="mono">2025</i><a href="https://www.credly.com/badges/a1686a18-7bb2-478a-bc9b-9a05163a034a/public_url">vérifier ↗</a></li>
-      <li><span class="mono">Cisco</span><b>Introduction to Data Science</b><i class="mono">2025</i><a href="https://www.credly.com/badges/da6104bf-268e-4b8c-a302-7dc0fd3435e2/public_url">vérifier ↗</a></li>
-      <li><span class="mono">Cisco</span><b>Data Analytics Essentials</b><i class="mono">2025</i><a href="https://www.credly.com/badges/1052776f-c472-42d9-8378-cfab3ff7d29f/public_url">vérifier ↗</a></li>
+      <li><span class="mono">Google · Coursera</span><b>Google Cybersecurity</b><i class="mono">2026</i><a href="https://www.coursera.org/verify/professional-cert/QP4A6JIYNVJS" target="_blank" rel="noopener">vérifier ↗</a></li>
+      <li><span class="mono">CNIL</span><b>Protection des données (RGPD)</b><i class="mono">2025</i><a href="assets/pdf/Certificat_RGPD.pdf" target="_blank" rel="noopener">PDF ↗</a></li>
+      <li><span class="mono">ANSSI</span><b>SecNumacadémie</b><i class="mono">2025</i><a href="assets/pdf/Certificat_SecNum.pdf" target="_blank" rel="noopener">PDF ↗</a></li>
+      <li><span class="mono">Cisco</span><b>Ethical Hacker</b><i class="mono">2025</i><a href="https://www.credly.com/badges/844a0702-e748-4107-b5fe-bf75a2514399/public_url" target="_blank" rel="noopener">vérifier ↗</a></li>
+      <li><span class="mono">Cisco</span><b>Introduction to Cybersecurity</b><i class="mono">2025</i><a href="https://www.credly.com/badges/6ac6fbdd-0dae-4283-bc36-4c4a88ff54e7/public_url" target="_blank" rel="noopener">vérifier ↗</a></li>
+      <li><span class="mono">Cisco</span><b>Endpoint Security</b><i class="mono">2025</i><a href="https://www.credly.com/badges/ea20936a-340f-43d7-aacf-20d7d3c264bf/public_url" target="_blank" rel="noopener">vérifier ↗</a></li>
+      <li><span class="mono">Cisco</span><b>Linux Unhatched</b><i class="mono">2025</i><a href="https://www.credly.com/badges/fb0f5b17-09d9-4968-b4fa-0d8cb23bf447/public_url" target="_blank" rel="noopener">vérifier ↗</a></li>
+      <li><span class="mono">Cisco</span><b>Computer Hardware Basics</b><i class="mono">2025</i><a href="https://www.credly.com/badges/3a22b18b-0b46-48b1-8588-8f1aea782f66/public_url" target="_blank" rel="noopener">vérifier ↗</a></li>
+      <li><span class="mono">Cisco</span><b>Introduction to Modern AI</b><i class="mono">2025</i><a href="https://www.credly.com/badges/a1686a18-7bb2-478a-bc9b-9a05163a034a/public_url" target="_blank" rel="noopener">vérifier ↗</a></li>
+      <li><span class="mono">Cisco</span><b>Introduction to Data Science</b><i class="mono">2025</i><a href="https://www.credly.com/badges/da6104bf-268e-4b8c-a302-7dc0fd3435e2/public_url" target="_blank" rel="noopener">vérifier ↗</a></li>
+      <li><span class="mono">Cisco</span><b>Data Analytics Essentials</b><i class="mono">2025</i><a href="https://www.credly.com/badges/1052776f-c472-42d9-8378-cfab3ff7d29f/public_url" target="_blank" rel="noopener">vérifier ↗</a></li>
     </ul>
-    <p class="mono small"><a href="https://www.credly.com/users/ybucaille">Profil Credly ↗</a> · <a href="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=6312186">Badge TryHackMe ↗</a></p>
+    <div class="profiles reveal">
+      <a class="profile credly" href="https://www.credly.com/users/ybucaille" target="_blank" rel="noopener">
+        <span class="mono">Credly</span>
+        <span class="badges" aria-hidden="true">
+          <img src="assets/media/badges/844a0702-e748-4107-b5fe-bf75a2514399.webp" alt="" loading="lazy" width="96" height="96">
+          <img src="assets/media/badges/6ac6fbdd-0dae-4283-bc36-4c4a88ff54e7.webp" alt="" loading="lazy" width="96" height="96">
+          <img src="assets/media/badges/ea20936a-340f-43d7-aacf-20d7d3c264bf.webp" alt="" loading="lazy" width="96" height="96">
+          <img src="assets/media/badges/fb0f5b17-09d9-4968-b4fa-0d8cb23bf447.webp" alt="" loading="lazy" width="96" height="96">
+          <img src="assets/media/badges/3a22b18b-0b46-48b1-8588-8f1aea782f66.webp" alt="" loading="lazy" width="96" height="96">
+          <img src="assets/media/badges/a1686a18-7bb2-478a-bc9b-9a05163a034a.webp" alt="" loading="lazy" width="96" height="96">
+          <img src="assets/media/badges/da6104bf-268e-4b8c-a302-7dc0fd3435e2.webp" alt="" loading="lazy" width="96" height="96">
+          <img src="assets/media/badges/1052776f-c472-42d9-8378-cfab3ff7d29f.webp" alt="" loading="lazy" width="96" height="96">
+        </span>
+        <b>8 badges Cisco, vérifiables <span class="mono">profil ↗</span></b>
+      </a>
+      <div class="profile thm">
+        <span class="mono">TryHackMe</span>
+        <div class="thm-frame"><iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=6312186" title="Badge TryHackMe de Yann Bucaille" width="327" height="84" loading="lazy" scrolling="no"></iframe></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ============ alternance ============ -->
 <section class="job" id="alternance" data-mode="job" aria-labelledby="job-t">
-  <div class="tape mono" aria-hidden="true"><div><span>alternance TSSR · calvados ou télétravail · 3 semaines en entreprise, 1 en formation · </span><span>alternance TSSR · calvados ou télétravail · 3 semaines en entreprise, 1 en formation · </span></div></div>
+  <div class="tape mono" aria-hidden="true"><div><span>alternance TSSR · france entière · présentiel ou/et télétravail · 3 semaines en entreprise, 1 en formation · </span><span>alternance TSSR · france entière · présentiel ou/et télétravail · 3 semaines en entreprise, 1 en formation · </span></div></div>
   <div class="job-in">
     <p class="mono">Couche 07 · à construire</p>
     <h2 id="job-t">Il manque une couche à la pile : votre entreprise.</h2>
     <dl class="mono">
       <div><dt>Formation</dt><dd>TSSR, technicien supérieur systèmes et réseaux · 2i Academy</dd></div>
       <div><dt>Rythme</dt><dd>3 semaines en entreprise, 1 semaine en formation</dd></div>
-      <div><dt>Lieu</dt><dd>Calvados, ou télétravail</dd></div>
+      <div><dt>Lieu</dt><dd>France entière, présentiel ou/et télétravail</dd></div>
       <div><dt>Début</dt><dd>avant le 31 décembre</dd></div>
     </dl>
-    <p class="job-cta"><a class="pill dark" href="mailto:bucaille.yann14@icloud.com?subject=Alternance%20TSSR">M'écrire</a> <a class="pill line" href="assets/pdf/bucaille-yann.pdf">Mon CV (PDF)</a></p>
+    <p class="job-cta"><a class="pill dark" href="mailto:bucaille.yann14@icloud.com?subject=Alternance%20TSSR">M'écrire</a> <a class="pill line" href="assets/pdf/bucaille-yann.pdf" target="_blank" rel="noopener">Mon CV (PDF)</a></p>
   </div>
 </section>
 
 <!-- ============ contact ============ -->
 <section class="contact" id="contact" data-mode="end">
   <figure class="cv">
-    <a href="assets/pdf/bucaille-yann.pdf"><img src="assets/media/cv.webp" alt="Première page du CV de Yann Bucaille" loading="lazy" width="640" height="905"></a>
+    <a href="assets/pdf/bucaille-yann.pdf" target="_blank" rel="noopener"><img src="assets/media/cv.webp" alt="Première page du CV de Yann Bucaille" loading="lazy" width="640" height="905"></a>
   </figure>
   <div>
     <p class="mono">Contact</p>
     <h2><a href="mailto:bucaille.yann14@icloud.com">bucaille.yann14@icloud.com</a></h2>
     <p><button class="copy mono" type="button" data-copy="bucaille.yann14@icloud.com">Copier l'adresse</button></p>
     <ul class="mono">
-      <li><a href="https://www.linkedin.com/in/yann-bucaille-235057230/">LinkedIn ↗</a></li>
-      <li><a href="https://github.com/Ybucaille">GitHub ↗</a></li>
-      <li><a href="assets/pdf/bucaille-yann.pdf">CV en PDF ↗</a></li>
+      <li><a href="https://www.linkedin.com/in/yann-bucaille-235057230/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+      <li><a href="https://github.com/Ybucaille" target="_blank" rel="noopener">GitHub ↗</a></li>
+      <li><a href="assets/pdf/bucaille-yann.pdf" target="_blank" rel="noopener">CV en PDF ↗</a></li>
     </ul>
   </div>
 </section>
@@ -379,10 +414,22 @@ $ scripts/test.sh
 </main>
 <dialog class="cvd" aria-labelledby="cvd-t">
   <div class="cvd-bar">
-    <p id="cvd-t">CV · Yann Bucaille</p>
-    <a class="mono" href="assets/pdf/bucaille-yann.pdf" download>Télécharger</a>
-    <a class="mono" href="assets/pdf/bucaille-yann.pdf" target="_blank" rel="noopener" data-raw>Nouvel onglet ↗</a>
-    <button class="cvd-x" type="button" aria-label="Fermer">×</button>
+    <div class="cvd-title">
+      <p class="mono" id="cvd-k">Document</p>
+      <p id="cvd-t">CV · Yann Bucaille</p>
+    </div>
+    <a class="cvd-act" href="assets/pdf/bucaille-yann.pdf" download data-act="dl" aria-label="Télécharger le PDF">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg>
+      <span>Télécharger</span>
+    </a>
+    <a class="cvd-act" href="assets/pdf/bucaille-yann.pdf" target="_blank" rel="noopener" data-raw data-act="open" aria-label="Ouvrir le PDF dans un nouvel onglet">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4.5h5.5V10M19.5 4.5 11 13M17 14v5.5H4.5V7H10"/></svg>
+      <span>Nouvel onglet</span>
+    </a>
+    <button class="cvd-x" type="button" aria-label="Fermer (Échap)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      <kbd class="mono">Échap</kbd>
+    </button>
   </div>
   <div class="cvd-body"></div>
 </dialog>

@@ -106,6 +106,7 @@ export function initStack(canvas, { layers, names, labels, certs, reduced, mobil
   const root = new THREE.Group();
   scene.add(root);
   const total = layers.length;
+  const layerOf = new Map(layers.flatMap((ids, i) => ids.map(id => [id, i])));
 
   const coreGeo = new THREE.BoxGeometry(W, H, D);
   const edgeGeo = new THREE.EdgesGeometry(coreGeo);
@@ -237,8 +238,15 @@ export function initStack(canvas, { layers, names, labels, certs, reduced, mobil
     const job = mode === 'job' || mode === 'end';
     const certsMode = mode === 'certs' ? 1 : 0;
 
-    const ty = whole ? -(total - 1) * GAP / 2 : job ? -(total - 0.2) * GAP : -Math.max(0, layer) * GAP - certsMode * 0.6;
-    const td = (whole ? 1.55 : job ? 1.3 : 1.12 + certsMode * 0.1) * (mobile ? 1.55 : 1);
+    let ty = whole ? -(total - 1) * GAP / 2 : job ? -(total - 0.2) * GAP : -Math.max(0, layer) * GAP - certsMode * 0.6;
+    let td = (whole ? 1.55 : job ? 1.3 : 1.12 + certsMode * 0.1) * (mobile ? 1.55 : 1);
+    // technology filter: frame the layers that hold the matching projects and pull them out
+    const hitLayers = mode === 'tech' && hits ? new Set([...hits].map(id => layerOf.get(id)).filter(i => i != null)) : null;
+    if (hitLayers?.size) {
+      const lo = Math.min(...hitLayers), hi = Math.max(...hitLayers);
+      ty = -(lo + hi) / 2 * GAP;
+      td = (1.3 + (hi - lo) * 0.05) * (mobile ? 1.55 : 1);
+    }
     const tr = mode === 'intro' && !reduced ? 0.12 + Math.sin(now / 4500) * 0.1 : 0.15;
     cam.y += (ty - cam.y) * k; cam.dist += (td - cam.dist) * k; cam.rot += (tr - cam.rot) * k;
     root.rotation.y = cam.rot;
@@ -253,9 +261,10 @@ export function initStack(canvas, { layers, names, labels, certs, reduced, mobil
     const blink = reduced ? 1 : 0.55 + 0.45 * Math.sin(now / 180);
     slabs.forEach((s, i) => {
       const active = !whole && !job && i === layer;
-      s.drawer += ((active ? 1 : 0) - s.drawer) * k;
+      const pulled = hitLayers?.has(i);
+      s.drawer += ((active ? 1 : pulled ? 0.45 : 0) - s.drawer) * k;
       s.g.position.z = s.drawer * 0.85;
-      s.edges.material.opacity = active ? 0.7 : 0.3;
+      s.edges.material.opacity = active || pulled ? 0.7 : 0.3;
       s.fleds.forEach(({ id, l }) => {
         const on = hits ? hits.has(id) : active && id === project;
         l.material.color.copy(on ? accC : active ? tmpC.copy(accC).multiplyScalar(0.35) : ledOff);
