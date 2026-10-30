@@ -159,6 +159,9 @@ h1 span:last-child { font-weight: 300; font-style: normal; }
 .media.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .media.portrait { width: min(270px, 60%); }
 .media.portrait video { aspect-ratio: 9 / 16; object-fit: cover; }
+.media.portrait.tall { width: min(380px, 66%); }
+.media.portrait.tall video { aspect-ratio: 4 / 5; }
+.media.portrait.tall figcaption { width: calc(var(--col) - 100% - 16px); max-width: 200px; }
 .sound {
   position: absolute; left: calc(100% + 16px); bottom: 0; white-space: nowrap; cursor: pointer;
   background: none; border: 0; border-bottom: 1px solid var(--ink); padding: 4px 0; color: var(--ink);
@@ -386,7 +389,8 @@ h1 span:last-child { font-weight: 300; font-style: normal; }
   .also li em, .path li > span:last-child { grid-column: 1; }
   .media.portrait { width: 62%; }
   .sound { position: static; margin-top: 10px; }
-  .media.portrait figcaption { position: static; width: auto; margin-top: 10px; }
+  .media.portrait figcaption, .media.portrait.tall figcaption { position: static; width: auto; max-width: none; margin-top: 10px; }
+  .media.portrait.tall { width: 78%; }
   .certs li { grid-template-columns: 1fr auto; gap: 2px 10px; }
   .certs li b { grid-column: 1; }
   .certs li i { grid-row: 1; grid-column: 2; }

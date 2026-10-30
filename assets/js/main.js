@@ -75,15 +75,18 @@ const vidIO = new IntersectionObserver(entries => entries.forEach(e => {
 }), { threshold: 0.35 });
 $$('video[data-src]').forEach(v => { if (reduced) v.controls = true; vidIO.observe(v); });
 
-const sound = document.querySelector('.sound');
-sound?.addEventListener('click', () => {
+$$('.sound').forEach(sound => sound.addEventListener('click', () => {
   const v = sound.previousElementSibling;
   if (!v.src) v.src = v.dataset.src;
   v.muted = !v.muted;
-  if (!v.muted) v.play().catch(() => {});
+  if (!v.muted) {
+    // one video speaks at a time
+    $$('.sound[aria-pressed="true"]').forEach(o => { if (o !== sound) o.click(); });
+    v.play().catch(() => {});
+  }
   sound.setAttribute('aria-pressed', String(!v.muted));
   sound.textContent = v.muted ? 'Activer le son' : 'Couper le son';
-});
+}));
 
 // ---------- terminals ----------
 function paint(line) {
@@ -337,11 +340,13 @@ async function boot() {
   try {
     const probe = document.createElement('canvas').getContext('webgl2');
     if (!probe) return;
-    const { initStack } = await import('./stack.js?v=12');
+    const { initStack } = await import('./stack.js?v=14');
     await document.fonts.ready;
     const layers = layerSections.map(s => $$('[data-project]', s).map(el => el.dataset.project));
     const labels = Object.fromEntries($$('[data-project]').map(el => [el.dataset.project, el.dataset.label || el.querySelector('h3, strong')?.textContent.trim()]));
-    stack = initStack(canvas, { layers, names: NAMES, labels, certs: $$('.certs li').length, reduced, mobile, theme: root.dataset.theme });
+    const colEl = document.querySelector('.layer-head');
+    const columnRight = () => colEl.getBoundingClientRect().right;
+    stack = initStack(canvas, { layers, names: NAMES, labels, certs: $$('.certs li').length, reduced, mobile, theme: root.dataset.theme, columnRight });
     lastEl = null; track();
     requestAnimationFrame(() => canvas.classList.add('on'));
   } catch (err) {

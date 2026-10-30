@@ -81,7 +81,7 @@ function topPanel(p, items) {
   });
 }
 
-export function initStack(canvas, { layers, names, labels, certs, reduced, mobile, theme }) {
+export function initStack(canvas, { layers, names, labels, certs, reduced, mobile, theme, columnRight }) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(devicePixelRatio, mobile ? 1.5 : 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -214,13 +214,46 @@ export function initStack(canvas, { layers, names, labels, certs, reduced, mobil
   let certT0 = -1;
   const cam = { y: -2.6, dist: 1.55, rot: 0.15 };
 
+  const fit = { shift: 0, k: 1 };
   function resize() {
     const w = innerWidth, h = innerHeight;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     if (mobile) camera.setViewOffset(w, h, 0, h * 0.24, w, h);
-    else camera.setViewOffset(w, h, -w * 0.25, 0, w, h);
+    else camera.setViewOffset(w, h, -w * 0.25 - fit.shift, 0, w, h);
     camera.updateProjectionMatrix();
+  }
+  // Desktop: keep the rack clear of the text column. Each frame, the footprint of the rack
+  // at the camera's height (drawers pulled out included) is projected on screen; if it
+  // crosses the column it slides right, and if the free space is too narrow it backs off.
+  const corner = new THREE.Vector3(), up = new THREE.Vector3(0, 1, 0);
+  function fitToColumn() {
+    if (mobile || !columnRight) return;
+    const w = innerWidth, margin = 28;
+    const left = columnRight() + margin, right = w - margin;
+    if (right - left < 160) return;
+    camera.updateMatrixWorld();
+    let xmin = Infinity, xmax = -Infinity;
+    for (const x of [-W / 2, W / 2]) for (const z of [-D / 2, D / 2 + 0.85]) for (const dy of [0.5, -0.5]) {
+      corner.set(x, cam.y + dy, z).applyAxisAngle(up, root.rotation.y).project(camera);
+      const px = (corner.x + 1) / 2 * w;
+      xmin = Math.min(xmin, px); xmax = Math.max(xmax, px);
+    }
+    const span = xmax - xmin, avail = right - left;
+    // the alternance and contact sections are not laid out as a column: natural place there
+    const column = state.mode !== 'job' && state.mode !== 'end';
+    // size: back off when the rack is wider than the free space, come back when it fits
+    const wantK = column ? Math.min(3, Math.max(1, fit.k * span / (avail * 0.97))) : 1;
+    // position: slide right when it crosses the column, return to the natural place otherwise
+    let wantShift = fit.shift;
+    if (!column) wantShift = 0;
+    else if (xmin < left) wantShift += left - xmin;
+    else if (xmax > right) wantShift -= xmax - right;
+    else if (fit.shift > 0) wantShift -= Math.min(fit.shift, xmin - left);
+    const kk = reduced ? 1 : 0.18;
+    const ns = fit.shift + (wantShift - fit.shift) * kk;
+    fit.k += (wantK - fit.k) * kk;
+    if (Math.abs(ns - fit.shift) > 0.3) { fit.shift = ns; resize(); }
   }
   resize();
   addEventListener('resize', resize);
@@ -248,12 +281,14 @@ export function initStack(canvas, { layers, names, labels, certs, reduced, mobil
       td = (1.3 + (hi - lo) * 0.05) * (mobile ? 1.55 : 1);
     }
     const tr = mode === 'intro' && !reduced ? 0.12 + Math.sin(now / 4500) * 0.1 : 0.15;
+    td *= fit.k;
     cam.y += (ty - cam.y) * k; cam.dist += (td - cam.dist) * k; cam.rot += (tr - cam.rot) * k;
     root.rotation.y = cam.rot;
     camera.position.copy(offset).multiplyScalar(cam.dist);
     camera.position.y += cam.y;
     look.set(0, cam.y, 0);
     camera.lookAt(look);
+    fitToColumn();
     sun.target.position.set(0, cam.y, 0);
     sun.position.set(3, cam.y + 9, 7);
 

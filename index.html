@@ -20,14 +20,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=12">
+<link rel="stylesheet" href="assets/css/site.css?v=14">
 <script type="importmap">
 { "imports": {
   "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js",
   "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
 } }
 </script>
-<script type="module" src="assets/js/main.js?v=12"></script>
+<script type="module" src="assets/js/main.js?v=14"></script>
 </head>
 <body>
 <a class="skip" href="#c1">Aller aux projets</a>
@@ -123,6 +123,20 @@
       <figcaption class="mono">Great Fairy Fountain (Koji Kondo), reprise à la harpe · une corde pincée Karplus-Strong par voix</figcaption>
     </figure>
     <p class="tech mono"><span>Node.js</span><span>MathJax</span><span>ffmpeg</span></p>
+  </article>
+
+  <article class="project" data-project="doute" data-label="le son du doute" data-tech="Node.js,Ollama,ffmpeg">
+    <p class="mono kicker">01.5 · entendre une IA douter</p>
+    <h3>le son du doute</h3>
+    <p class="lede">Chaque mot qu'un modèle de langage écrit devient une note. Quand il hésite, les mots qu'il a failli dire sonnent faux et la cassette se met à pleurer.</p>
+    <p>Ollama donne les cinq suites les plus probables de chaque token ; le doute est leur entropie, ramenée entre 0 et 1. La mélodie, l'harmonie et le tempo sont composés à l'avance : seul le doute, mesuré token par token, ajoute des notes fantômes, fait pleurer la bande et change le visage de la cassette. Les tests vérifient que la partition ne dépend jamais des réponses. Qwen 3.5 4B tourne en local, à température 0.</p>
+    <figure class="media portrait tall">
+      <video loop playsinline muted preload="none" poster="assets/media/son-du-doute.jpg" data-src="assets/media/son-du-doute.mp4" aria-label="Le son du doute : la cassette s'inquiète pendant que Qwen invente une lune de Neptune, puis un tampon FAUX s'abat sur elle"></video>
+      <button class="sound mono" type="button" aria-pressed="false">Activer le son</button>
+      <figcaption class="mono">Qwen 3.5 4B invente une lune de Neptune · 1 min 43, avec le son</figcaption>
+    </figure>
+    <p class="tech mono"><span>Node.js</span><span>Ollama</span><span>Qwen 3.5 4B</span><span>ffmpeg</span><span>MIT</span></p>
+    <p class="links"><a href="https://github.com/Ybucaille/le-son-du-doute" target="_blank" rel="noopener">GitHub ↗</a> <a href="https://ybucaille.github.io/le-son-du-doute/" target="_blank" rel="noopener">Site du projet ↗</a></p>
   </article>
 
   <div class="also">
