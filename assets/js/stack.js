@@ -234,7 +234,7 @@ export function initStack(canvas, { layers, names, labels, certs, reduced, mobil
     const dt = Math.min(0.05, (now - last) / 1000); last = now;
     const k = reduced ? 1 : 1 - Math.exp(-dt * 4.5);
     const { mode, layer, project, hits } = state;
-    const whole = mode === 'intro' || mode === 'tech';
+    const whole = mode === 'intro' || mode === 'tech' || mode === 'oss';
     const job = mode === 'job' || mode === 'end';
     const certsMode = mode === 'certs' ? 1 : 0;
 

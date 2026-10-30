@@ -27,9 +27,10 @@ const railLinks = $$('.rail a');
 
 function apply() {
   const { mode, layer } = state;
-  railLinks.forEach((a, i) => a.setAttribute('aria-current', String(i === layer && mode !== 'intro' && mode !== 'tech')));
+  railLinks.forEach((a, i) => a.setAttribute('aria-current', String(i === layer && mode !== 'intro' && mode !== 'tech' && mode !== 'oss')));
   const label = mode === 'intro' ? ['00', 'surface']
     : mode === 'tech' ? ['≡', 'index des technos']
+    : mode === 'oss' ? ['↗', 'open source']
     : mode === 'job' ? ['07', 'à construire']
     : mode === 'end' ? ['07', 'contact']
     : [String(layer + 1).padStart(2, '0'), SHORT[layer]];
@@ -119,7 +120,7 @@ $$('pre[data-type]').forEach(pre => {
 function setHits(set) { currentHits = set; stack?.setState({ hits: set }); }
 const techMap = new Map();
 $$('[data-tech]').forEach(el => {
-  const name = el.querySelector('h3, strong')?.textContent.trim();
+  const name = el.dataset.label || el.querySelector('h3, strong')?.textContent.trim();
   el.dataset.tech.split(',').forEach(t => {
     if (!techMap.has(t)) techMap.set(t, []);
     techMap.get(t).push({ id: el.dataset.project, name });
@@ -216,7 +217,23 @@ if (prs) {
   };
   more.addEventListener('click', () => { prs.classList.toggle('open'); setMore(); });
   setMore();
-  const render = items => {
+  // the bar and the line under it: merged / in review / closed, out of every PR created
+  const meta = prs.querySelector('.prs-meta');
+  const setCounts = c => {
+    const pl = (n, w) => `${n} ${w}${n > 1 ? 's' : ''}`;
+    for (const k of ['merged', 'open', 'closed']) prs.querySelector(`[data-seg="${k}"]`).style.flexGrow = c[k];
+    prs.querySelector('.prs-ratio').setAttribute('aria-label', `${pl(c.merged, 'fusionnée')}, ${c.open} en revue, ${pl(c.closed, 'fermée')}, sur ${c.total} pull requests créées`);
+    meta.querySelector('.prs-merged').textContent = pl(c.merged, 'fusionnée');
+    meta.querySelector('[data-n="open"]').textContent = c.open;
+    meta.querySelector('[data-n="closed"]').parentNode.childNodes.forEach(n => {
+      if (n.nodeType === 3 && /fermée/.test(n.textContent)) n.textContent = n.textContent.replace(/fermées?/, c.closed > 1 ? 'fermées' : 'fermée');
+    });
+    meta.querySelector('[data-n="closed"]').textContent = c.closed;
+    meta.querySelector('[data-n="total"]').textContent = c.total;
+  };
+  const render = (items, counts) => {
+    // merged first (the strongest proof), then the rest, newest first (API order kept)
+    items = [...items.filter(it => it.pull_request?.merged_at), ...items.filter(it => !it.pull_request?.merged_at)];
     const rows = items.map(it => {
       const merged = !!it.pull_request?.merged_at;
       const repo = it.repository_url.split('/repos/')[1];
@@ -234,17 +251,14 @@ if (prs) {
       return li;
     });
     list.replaceChildren(...rows);
-    prs.querySelector('[data-prs-count]').textContent = rows.length;
-    const merged = items.filter(it => it.pull_request?.merged_at).length;
-    prs.querySelector('[data-prs-merged]').textContent = merged;
-    prs.querySelector('[data-prs-merged-l]').textContent = merged > 1 ? 'fusionnées' : 'fusionnée';
+    if (counts) setCounts(counts);
     prs.classList.add('live');
     setMore();
   };
-  const KEY = 'prs-cache', TTL = 30 * 60e3;
+  const KEY = 'prs-cache-v2', TTL = 30 * 60e3;
   let cached = null;
   try { cached = JSON.parse(localStorage.getItem(KEY)); } catch {}
-  if (cached && Date.now() - cached.t < TTL) render(cached.items);
+  if (cached && Date.now() - cached.t < TTL) render(cached.items, cached.counts);
   else {
     const who = prs.dataset.author;
     const q = encodeURIComponent(`author:${who} type:pr -user:${who}`);
@@ -255,8 +269,11 @@ if (prs) {
         const items = d.items.filter(it => it.state === 'open' || it.pull_request?.merged_at)
           .map(({ html_url, number, title, draft, state, repository_url, pull_request }) => ({ html_url, number, title, draft, state, repository_url, pull_request: { merged_at: pull_request?.merged_at } }));
         if (!items.length) return;
-        render(items);
-        try { localStorage.setItem(KEY, JSON.stringify({ t: Date.now(), items })); } catch {}
+        const merged = d.items.filter(it => it.pull_request?.merged_at).length;
+        const open = d.items.filter(it => it.state === 'open').length;
+        const counts = { merged, open, closed: d.items.length - merged - open, total: d.items.length };
+        render(items, counts);
+        try { localStorage.setItem(KEY, JSON.stringify({ t: Date.now(), items, counts })); } catch {}
       })
       .catch(() => {});
   }
@@ -320,7 +337,7 @@ async function boot() {
   try {
     const probe = document.createElement('canvas').getContext('webgl2');
     if (!probe) return;
-    const { initStack } = await import('./stack.js?v=11');
+    const { initStack } = await import('./stack.js?v=12');
     await document.fonts.ready;
     const layers = layerSections.map(s => $$('[data-project]', s).map(el => el.dataset.project));
     const labels = Object.fromEntries($$('[data-project]').map(el => [el.dataset.project, el.dataset.label || el.querySelector('h3, strong')?.textContent.trim()]));

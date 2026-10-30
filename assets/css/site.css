@@ -101,7 +101,7 @@ img, video { display: block; max-width: 100%; height: auto; }
 
 /* ---------- content column ---------- */
 main { position: relative; z-index: 2; }
-.intro, .layer-head, .project, .also, .path, .certs, .tech-index {
+.intro, .layer-head, .project, .also, .path, .certs, .oss, .tech-index {
   width: var(--col); margin-left: var(--left);
 }
 .intro { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: 80px; }
@@ -193,6 +193,11 @@ h1 span:last-child { font-weight: 300; font-style: normal; }
 .prs { margin: 18px 0 20px; }
 .prs-meta { margin: 0 0 10px; font-size: .74rem; color: var(--ink-2); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
 .prs-merged { font-weight: 500; color: #181916; background: var(--acc); padding: 0 5px; }
+.prs-ratio { display: flex; gap: 3px; height: 6px; max-width: 360px; margin: 0 0 9px; }
+.prs-ratio .seg { flex: 0 0 auto; flex-basis: 0; min-width: 6px; border-radius: 3px; transition: flex-grow .8s var(--ease); }
+.prs-ratio .merged { background: var(--acc); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 25%, transparent); }
+.prs-ratio .open { background: transparent; box-shadow: inset 0 0 0 1px var(--ink-2); }
+.prs-ratio .closed { background: repeating-linear-gradient(135deg, var(--line) 0 2px, transparent 2px 4px); box-shadow: inset 0 0 0 1px var(--line); }
 .prs-live { display: none; }
 .prs.live .prs-live { display: inline-flex; align-items: center; gap: 6px; }
 .prs.live .prs-live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--acc); box-shadow: 0 0 0 3px color-mix(in srgb, var(--acc) 30%, transparent); }
@@ -237,14 +242,15 @@ h1 span:last-child { font-weight: 300; font-style: normal; }
 .also li strong { font-weight: 650; }
 .also li span { font-size: .94rem; color: var(--ink-2); }
 .also li em { grid-column: 2; font-style: normal; color: var(--ink); }
-.also-vid { grid-column: 2; width: 100%; aspect-ratio: 1200 / 992; margin-top: 10px; border-radius: 8px; background: #181916; display: block; }
 .also li:hover, .also li.lit { background: linear-gradient(90deg, var(--hl), transparent 80%); }
 
 /* tech index */
-.tech-index { padding: 16vh 0 14vh; }
-.tech-index > .mono:first-child { color: var(--acc-deep); margin: 0; }
-.tech-index h2 { font-size: clamp(2.2rem, 4.6vw, 3.8rem); line-height: .95; letter-spacing: -.035em; margin: .15em 0 .3em; }
-.tech-index > p { color: var(--ink-2); }
+.tech-index, .oss { padding: 16vh 0 14vh; }
+.oss { padding-bottom: 6vh; }
+.tech-index > .mono:first-child, .oss > .mono:first-child { color: var(--acc-deep); margin: 0; }
+.tech-index h2, .oss h2 { font-size: clamp(2.2rem, 4.6vw, 3.8rem); line-height: .95; letter-spacing: -.035em; margin: .15em 0 .3em; }
+.tech-index > p, .oss > p:not(.lede):not(.tech):not(.links) { color: var(--ink-2); }
+.oss > p { margin: 0 0 16px; }
 .ti-list { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 6px 4px; }
 .ti-list button {
   font: inherit; color: var(--ink); background: transparent; cursor: pointer;
@@ -370,14 +376,14 @@ h1 span:last-child { font-weight: 300; font-style: normal; }
   .rail { display: none; }
   .intro { justify-content: flex-end; padding-bottom: 8vh; background: linear-gradient(transparent 30%, color-mix(in srgb, var(--bg) 88%, transparent) 52%); box-shadow: 0 0 0 16px transparent; }
   .layer-head { min-height: 52vh; justify-content: flex-end; padding-bottom: 4vh; }
-  .project, .also, .path, .certs, .tech-index {
+  .project, .also, .path, .certs, .oss, .tech-index {
     background: color-mix(in srgb, var(--bg) 90%, transparent);
     box-shadow: 0 0 0 16px color-mix(in srgb, var(--bg) 90%, transparent);
   }
   .project { padding: 6vh 0 7vh; margin-bottom: 30vh; }
-  .also, .tech-index, .certs { margin-bottom: 20vh; }
+  .also, .oss, .tech-index, .certs { margin-bottom: 20vh; }
   .also li, .path li { grid-template-columns: 1fr; }
-  .also li em, .also-vid, .path li > span:last-child { grid-column: 1; }
+  .also li em, .path li > span:last-child { grid-column: 1; }
   .media.portrait { width: 62%; }
   .sound { position: static; margin-top: 10px; }
   .media.portrait figcaption { position: static; width: auto; margin-top: 10px; }

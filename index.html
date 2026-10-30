@@ -20,14 +20,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=11">
+<link rel="stylesheet" href="assets/css/site.css?v=12">
 <script type="importmap">
 { "imports": {
   "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js",
   "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
 } }
 </script>
-<script type="module" src="assets/js/main.js?v=11"></script>
+<script type="module" src="assets/js/main.js?v=12"></script>
 </head>
 <body>
 <a class="skip" href="#c1">Aller aux projets</a>
@@ -112,6 +112,19 @@
     <p class="links"><a href="https://github.com/Ybucaille/livequill" target="_blank" rel="noopener">GitHub ↗</a> <a href="https://ybucaille.github.io/livequill/" target="_blank" rel="noopener">Site du projet ↗</a></p>
   </article>
 
+  <article class="project" data-project="equation" data-tech="Node.js,MathJax,ffmpeg">
+    <p class="mono kicker">01.4 · son, image et composition par LLM</p>
+    <h3>equation sound lab</h3>
+    <p class="lede">Des équations qu'on entend. On écrit y = f(x), un point parcourt la courbe et sa hauteur devient la hauteur du son.</p>
+    <p>La règle : f = 130,81 Hz × 2<sup>y</sup>. y = 0 donne un do3, +1 monte d'une octave. La courbe se trace en direct sous sa formule, typographiée par MathJax, et le lab exporte la vidéo avec ffmpeg.</p>
+    <figure class="media portrait">
+      <video loop playsinline muted preload="none" poster="assets/media/equation.jpg" data-src="assets/media/equation.mp4" aria-label="Great Fairy Fountain rejouée à la harpe par equation sound lab : chaque note est une équation tracée en direct"></video>
+      <button class="sound mono" type="button" aria-pressed="false">Activer le son</button>
+      <figcaption class="mono">Great Fairy Fountain (Koji Kondo), reprise à la harpe · une corde pincée Karplus-Strong par voix</figcaption>
+    </figure>
+    <p class="tech mono"><span>Node.js</span><span>MathJax</span><span>ffmpeg</span></p>
+  </article>
+
   <div class="also">
     <h3 class="mono">Aussi dans cette couche</h3>
     <ul>
@@ -145,41 +158,17 @@
     <p class="links"><a href="https://github.com/Ybucaille/woofer" target="_blank" rel="noopener">GitHub ↗</a> <a href="https://ybucaille.github.io/woofer/" target="_blank" rel="noopener">Démo en ligne ↗</a></p>
   </article>
 
-  <article class="project" data-project="caelestia" data-label="Open source" data-tech="QML,Quickshell,Hyprland,GLSL,Shell,Rust">
-    <p class="mono kicker">02.2 · contributions open source</p>
-    <h3>Open source</h3>
-    <p class="lede">Je contribue en externe aux projets que j'utilise tous les jours, à commencer par le shell de bureau Caelestia (Quickshell sur Hyprland).</p>
-    <div class="prs" data-author="Ybucaille">
-      <p class="mono prs-meta">Pull requests · <span data-prs-count>9</span> · <b class="prs-merged"><span data-prs-merged>1</span> <span data-prs-merged-l>fusionnée</span></b> <span class="prs-live">synchronisé avec GitHub</span></p>
-      <ol class="gitlog mono">
-        <li><a href="https://github.com/uutils/coreutils/pull/15928" target="_blank" rel="noopener"><b>ouverte</b><i>uutils/coreutils #15928</i><span>install: compare the owner with -C even when only -g is given</span></a></li>
-        <li><a href="https://github.com/uutils/coreutils/pull/15927" target="_blank" rel="noopener"><b>ouverte</b><i>uutils/coreutils #15927</i><span>du: saturate size totals instead of wrapping on overflow</span></a></li>
-        <li><a href="https://github.com/uutils/coreutils/pull/15926" target="_blank" rel="noopener"><b>ouverte</b><i>uutils/coreutils #15926</i><span>dd: keep O_APPEND on stdout when applying oflag</span></a></li>
-        <li><a href="https://github.com/uutils/coreutils/pull/15925" target="_blank" rel="noopener"><b>ouverte</b><i>uutils/coreutils #15925</i><span>unexpand: convert leading multibyte blanks on newline-terminated lines</span></a></li>
-        <li><a href="https://github.com/caelestia-dots/shell/pull/2217" target="_blank" rel="noopener"><b>ouverte</b><i>caelestia-dots/shell #2217</i><span>fix(shaders): add GLSL ES 100 to wallpaper transition shaders</span></a></li>
-        <li><a href="https://github.com/caelestia-dots/shell/pull/2214" target="_blank" rel="noopener"><b>ouverte</b><i>caelestia-dots/shell #2214</i><span>feat(bar): add optional application icons to workspaces</span></a></li>
-        <li><a href="https://github.com/caelestia-dots/shell/pull/2186" target="_blank" rel="noopener"><b class="ok">fusionnée</b><i>caelestia-dots/shell #2186</i><span>fix(drawers): keep sidebar open when hovering utilities</span></a></li>
-        <li><a href="https://github.com/caelestia-dots/shell/pull/2179" target="_blank" rel="noopener"><b>ouverte</b><i>caelestia-dots/shell #2179</i><span>feat(launcher): add prefixed web searches</span></a></li>
-        <li><a href="https://github.com/caelestia-dots/shell/pull/2178" target="_blank" rel="noopener"><b>ouverte</b><i>caelestia-dots/shell #2178</i><span>fix(services): destroy completed nmcli command processes</span></a></li>
-      </ol>
-      <button class="prs-more mono" type="button" hidden></button>
-    </div>
-    <p>À côté, l'extension <a href="https://github.com/Ybucaille/caelestia-websearch" target="_blank" rel="noopener">caelestia-websearch</a> ajoute la recherche web au lanceur Caelestia (Google, YouTube, Wikipédia, GitHub, Reddit, Maps), sans toucher au lancement d'applications, avec une installation locale sauvegardée et une désinstallation propre.</p>
-    <p class="tech mono"><span>QML</span><span>Quickshell</span><span>Hyprland</span><span>GLSL</span><span>Shell</span><span>Rust</span></p>
-    <p class="links"><a href="https://github.com/search?q=is%3Apr+author%3AYbucaille+-user%3AYbucaille&amp;type=pullrequests&amp;s=created&amp;o=desc" target="_blank" rel="noopener">Toutes mes PR ↗</a></p>
-  </article>
-
-  <article class="project" data-project="equation" data-tech="Node.js,MathJax,ffmpeg">
-    <p class="mono kicker">02.3 · son et image</p>
-    <h3>equation sound lab</h3>
-    <p class="lede">Des équations qu'on entend. On écrit y = f(x), un point parcourt la courbe et sa hauteur devient la hauteur du son.</p>
-    <p>La règle : f = 130,81 Hz × 2<sup>y</sup>. y = 0 donne un do3, +1 monte d'une octave. La courbe se trace en direct sous sa formule, typographiée par MathJax, et le lab exporte la vidéo avec ffmpeg.</p>
-    <figure class="media portrait">
-      <video loop playsinline muted preload="none" poster="assets/media/equation.jpg" data-src="assets/media/equation.mp4" aria-label="Great Fairy Fountain rejouée à la harpe par equation sound lab : chaque note est une équation tracée en direct"></video>
-      <button class="sound mono" type="button" aria-pressed="false">Activer le son</button>
-      <figcaption class="mono">Great Fairy Fountain (Koji Kondo), reprise à la harpe · une corde pincée Karplus-Strong par voix</figcaption>
+  <article class="project" data-project="rusky" data-tech="Rust,GTK 4,Wayland">
+    <p class="mono kicker">02.2 · apprendre le russe sans y penser</p>
+    <h3>Rusky</h3>
+    <p class="lede">Toutes les 25 minutes, une carte de russe apparaît dans un coin de l'écran : trois réponses, la prononciation à la française, une explication en une phrase.</p>
+    <p>2 007 cartes sur dix niveaux, de l'alphabet jusqu'à l'argot et aux proverbes. La prononciation est calculée depuis l'accent tonique (молоко́ → ma·la·<b>ko</b>), la répétition est espacée façon Anki et chaque niveau s'ouvre quand le précédent est maîtrisé. La popup est une fenêtre GTK 4 posée par layer-shell au-dessus du bureau Wayland ; une fenêtre de révision suit l'activité sur 30 jours et les points faibles.</p>
+    <figure class="media">
+      <video muted loop playsinline preload="none" poster="assets/media/rusky.jpg" data-src="assets/media/rusky.mp4" aria-label="Rusky : une carte apparaît, la bonne réponse passe au vert, puis la fenêtre de révision montre la progression"></video>
+      <figcaption class="mono">Une vraie session, filmée par Rusky lui-même sur une base de démonstration</figcaption>
     </figure>
-    <p class="tech mono"><span>Node.js</span><span>MathJax</span><span>ffmpeg</span></p>
+    <p class="tech mono"><span>Rust 2024</span><span>GTK 4</span><span>layer-shell</span><span>Wayland</span><span>2 007 cartes</span></p>
+    <p class="links"><a href="https://github.com/Ybucaille/Rusky" target="_blank" rel="noopener">GitHub ↗</a> <a href="https://ybucaille.github.io/Rusky/" target="_blank" rel="noopener">Site du projet ↗</a></p>
   </article>
 </section>
 
@@ -208,13 +197,31 @@ identical</code></pre>
     <p class="links"><a href="https://github.com/Ybucaille/c2pa-strip" target="_blank" rel="noopener">GitHub ↗</a></p>
   </article>
 
-  <div class="also">
-    <h3 class="mono">Aussi dans cette couche</h3>
-    <ul>
-      <li data-project="cartman" data-tech="Go,Bubble Tea,mpv"><a href="https://github.com/Ybucaille/CartmanCLI" target="_blank" rel="noopener"><strong>CartmanCLI</strong></a><span>Lanceur d'épisodes en terminal : interface TUI, recherche par titre, reprise du dernier épisode, cache local, lecture dans mpv.</span><em class="mono">Go · Bubble Tea · mpv</em><video class="also-vid" muted loop playsinline preload="none" poster="assets/media/cartman.jpg" data-src="assets/media/cartman.mp4" aria-label="CartmanCLI : choix d'une saison puis navigation dans les épisodes"></video></li>
-      <li data-project="powerprinter" data-tech="Go"><strong>PowerPrinter</strong><span>Jeu de gestion dans le terminal, des groupes électrogènes jusqu'aux essaims de Dyson. La partie continue fermée, selon les vraies règles du jeu, et se sauvegarde toutes les 10 s ou à la réception de SIGTERM.</span><em class="mono">Go</em><video class="also-vid" muted loop playsinline preload="none" poster="assets/media/powerprinter.jpg" data-src="assets/media/powerprinter.mp4" aria-label="PowerPrinter : bilan hors ligne, chaîne de production puis carte des étoiles"></video></li>
-    </ul>
-  </div>
+  <article class="project" data-project="cartman" data-tech="Go,Bubble Tea,mpv">
+    <p class="mono kicker">03.2 · lecteur d'épisodes en terminal</p>
+    <h3>CartmanCLI</h3>
+    <p class="lede">Choisir une saison, un épisode, et le regarder dans mpv sans quitter le terminal.</p>
+    <p>L'interface TUI est écrite avec Bubble Tea : navigation au clavier, recherche par titre, reprise du dernier épisode vu. Un cache local accélère la recherche et la lecture, et mpv garde la position de chaque épisode. Tout passe aussi par des sous-commandes : <code>cartman play 10 8</code>, <code>cartman resume</code>, <code>cartman search</code>.</p>
+    <figure class="media">
+      <video muted loop playsinline preload="none" poster="assets/media/cartman.jpg" data-src="assets/media/cartman.mp4" aria-label="CartmanCLI : choix d'une saison puis navigation dans les épisodes"></video>
+      <figcaption class="mono">Enregistrée depuis le vrai binaire · choix d'une saison, puis des épisodes</figcaption>
+    </figure>
+    <p class="tech mono"><span>Go</span><span>Bubble Tea</span><span>mpv</span></p>
+    <p class="links"><a href="https://github.com/Ybucaille/CartmanCLI" target="_blank" rel="noopener">GitHub ↗</a></p>
+  </article>
+
+  <article class="project" data-project="powerprinter" data-tech="Go">
+    <p class="mono kicker">03.3 · jeu de gestion en terminal · code non publié</p>
+    <h3>PowerPrinter</h3>
+    <p class="lede">Un jeu de gestion dans le terminal, des groupes électrogènes improvisés jusqu'aux essaims de Dyson autour de vraies étoiles.</p>
+    <p>Chaque étape est une chaîne de goulots d'étranglement : raffinerie, fonderie de voiles, lanceur, puis faisceau stellaire. Fermé, le jeu continue selon les vraies règles (contrats de combustible, usure, stockage) et affiche un bilan au retour. Il se sauvegarde toutes les 10 secondes, et à la réception de <code>SIGTERM</code> ou <code>SIGHUP</code>.</p>
+    <figure class="media">
+      <video muted loop playsinline preload="none" poster="assets/media/powerprinter.jpg" data-src="assets/media/powerprinter.mp4" aria-label="PowerPrinter : bilan hors ligne, chaîne de production puis carte des étoiles"></video>
+      <figcaption class="mono">Une vraie partie · bilan hors ligne, chaîne de production, carte des étoiles</figcaption>
+    </figure>
+    <p class="tech mono"><span>Go</span><span>TUI</span><span>simulation hors ligne</span></p>
+  </article>
+
 </section>
 
 <!-- ============ 04 ============ -->
@@ -314,14 +321,6 @@ $ scripts/test.sh
   </article>
 </section>
 
-<!-- ============ index ============ -->
-<section class="tech-index" data-mode="tech" aria-labelledby="ti-t">
-  <p class="mono">Index</p>
-  <h2 id="ti-t">Les technologies, et où elles vivent</h2>
-  <p>Survolez ou sélectionnez une technologie : les projets qui l'utilisent s'allument dans la pile.</p>
-  <ul class="ti-list mono" id="ti-list"></ul>
-  <p class="ti-out mono" id="ti-out" aria-live="polite">&nbsp;</p>
-</section>
 
 <!-- ============ 06 ============ -->
 <section class="layer" id="c6" data-layer="5">
@@ -376,6 +375,45 @@ $ scripts/test.sh
       </div>
     </div>
   </div>
+</section>
+
+<!-- ============ open source ============ -->
+<section class="oss" id="open-source" data-mode="oss" aria-labelledby="oss-t" data-tech="QML,Quickshell,Hyprland,GLSL,Shell,Rust" data-project="caelestia" data-label="Open source">
+  <p class="mono">Hors de la pile</p>
+  <h2 id="oss-t">Contributions open source</h2>
+  <p class="lede">Je contribue en externe aux projets que j'utilise tous les jours : le shell de bureau Caelestia et Quickshell, sur lequel il repose, ou uutils coreutils, les outils de base de Linux réécrits en Rust.</p>
+  <div class="prs" data-author="Ybucaille">
+    <div class="prs-ratio" role="img" aria-label="2 fusionnées, 9 en revue, 1 fermée, sur 12 pull requests créées">
+      <span class="seg merged" data-seg="merged" style="flex-grow: 2"></span><span class="seg open" data-seg="open" style="flex-grow: 9"></span><span class="seg closed" data-seg="closed" style="flex-grow: 1"></span>
+    </div>
+    <p class="mono prs-meta"><b class="prs-merged"><span data-n="merged">2</span> fusionnées</b> · <span data-n="open">9</span> en revue · <span data-n="closed">1</span> fermée · sur <span data-n="total">12</span> créées <span class="prs-live">synchronisé avec GitHub</span></p>
+    <ol class="gitlog mono">
+      <li><a href="https://github.com/uutils/coreutils/pull/15925" target="_blank" rel="noopener"><b class="ok">fusionnée</b><i>uutils/coreutils #15925</i><span>unexpand: convert leading multibyte blanks on newline-terminated lines</span></a></li>
+      <li><a href="https://github.com/caelestia-dots/shell/pull/2186" target="_blank" rel="noopener"><b class="ok">fusionnée</b><i>caelestia-dots/shell #2186</i><span>fix(drawers): keep sidebar open when hovering utilities</span></a></li>
+      <li><a href="https://github.com/uutils/coreutils/pull/16049" target="_blank" rel="noopener"><b>ouverte</b><i>uutils/coreutils #16049</i><span>timeout: send KILL to the whole process group</span></a></li>
+      <li><a href="https://github.com/quickshell-mirror/quickshell/pull/1407" target="_blank" rel="noopener"><b>ouverte</b><i>quickshell-mirror/quickshell #1407</i><span>core: watch JavaScript files imported from QML</span></a></li>
+      <li><a href="https://github.com/uutils/coreutils/pull/15928" target="_blank" rel="noopener"><b>ouverte</b><i>uutils/coreutils #15928</i><span>install: compare the owner with -C even when only -g is given</span></a></li>
+      <li><a href="https://github.com/uutils/coreutils/pull/15927" target="_blank" rel="noopener"><b>ouverte</b><i>uutils/coreutils #15927</i><span>du: saturate size totals instead of wrapping on overflow</span></a></li>
+      <li><a href="https://github.com/uutils/coreutils/pull/15926" target="_blank" rel="noopener"><b>ouverte</b><i>uutils/coreutils #15926</i><span>dd: keep O_APPEND on stdout when applying oflag</span></a></li>
+      <li><a href="https://github.com/caelestia-dots/shell/pull/2217" target="_blank" rel="noopener"><b>ouverte</b><i>caelestia-dots/shell #2217</i><span>fix(shaders): add GLSL ES 100 to wallpaper transition shaders</span></a></li>
+      <li><a href="https://github.com/caelestia-dots/shell/pull/2214" target="_blank" rel="noopener"><b>ouverte</b><i>caelestia-dots/shell #2214</i><span>feat(bar): add optional application icons to workspaces</span></a></li>
+      <li><a href="https://github.com/caelestia-dots/shell/pull/2179" target="_blank" rel="noopener"><b>ouverte</b><i>caelestia-dots/shell #2179</i><span>feat(launcher): add prefixed web searches</span></a></li>
+      <li><a href="https://github.com/caelestia-dots/shell/pull/2178" target="_blank" rel="noopener"><b>ouverte</b><i>caelestia-dots/shell #2178</i><span>fix(services): destroy completed nmcli command processes</span></a></li>
+    </ol>
+    <button class="prs-more mono" type="button" hidden></button>
+  </div>
+  <p>À côté, l'extension <a href="https://github.com/Ybucaille/caelestia-websearch" target="_blank" rel="noopener">caelestia-websearch</a> ajoute la recherche web au lanceur Caelestia (Google, YouTube, Wikipédia, GitHub, Reddit, Maps), sans toucher au lancement d'applications, avec une installation locale sauvegardée et une désinstallation propre.</p>
+  <p class="tech mono"><span>QML</span><span>Quickshell</span><span>Hyprland</span><span>GLSL</span><span>Shell</span><span>Rust</span></p>
+  <p class="links"><a href="https://github.com/search?q=is%3Apr+author%3AYbucaille+-user%3AYbucaille&amp;type=pullrequests&amp;s=created&amp;o=desc" target="_blank" rel="noopener">Toutes mes PR ↗</a></p>
+</section>
+
+<!-- ============ index ============ -->
+<section class="tech-index" data-mode="tech" aria-labelledby="ti-t">
+  <p class="mono">Index</p>
+  <h2 id="ti-t">Les technologies, et où elles vivent</h2>
+  <p>Survolez ou sélectionnez une technologie : les projets qui l'utilisent s'allument dans la pile.</p>
+  <ul class="ti-list mono" id="ti-list"></ul>
+  <p class="ti-out mono" id="ti-out" aria-live="polite">&nbsp;</p>
 </section>
 
 <!-- ============ alternance ============ -->
